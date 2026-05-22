@@ -115,7 +115,7 @@ const YourWorkInSync: React.FC<YourWorkInSyncProps> = ({
                   whiteSpace: "nowrap",
                 }}
               >
-                AI įrankiai dirba sklandžiai
+                DI įrankiai dirba sklandžiai
               </span>
             </div>
           </div>

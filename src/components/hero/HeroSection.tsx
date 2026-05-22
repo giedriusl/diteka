@@ -86,7 +86,7 @@ export default function HeroSection() {
         <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
             <div className="w-full max-w-[748.71px] lg:w-[748.71px] text-center flex justify-center flex-col text-[#37322F] text-[24px] xs:text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-normal leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-2 sm:px-4 md:px-0">
-              AI be streso —<br />
+              DI be streso —<br />
               jūsų versle
             </div>
             <div className="w-full max-w-[506.08px] lg:w-[506.08px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
@@ -124,14 +124,14 @@ export default function HeroSection() {
                   <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${activeCard === 0 ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-95 blur-sm"}`}>
                     <img
                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dsadsadsa.jpg-xTHS4hGwCWp2H5bTj8np6DXZUyrxX7.jpeg"
-                      alt="AI audito rezultatai"
+                      alt="DI audito rezultatai"
                       className="w-full h-full object-cover"
                     />
                   </div>
                   <div className={`absolute inset-0 transition-all duration-500 ease-in-out ${activeCard === 1 ? "opacity-100 scale-100 blur-0" : "opacity-0 scale-95 blur-sm"}`}>
                     <img
                       src="/analytics-dashboard-with-charts-graphs-and-data-vi.jpg"
-                      alt="AI diegimo eiga"
+                      alt="DI diegimo eiga"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -161,8 +161,8 @@ export default function HeroSection() {
 
         <div className="flex-1 px-0 sm:px-2 md:px-0 flex flex-col md:flex-row justify-center items-stretch gap-0">
           <FeatureCard
-            title="AI galimybių auditas"
-            description="Išanalizuojame jūsų procesus ir identifikuojame, kur AI sukurtų didžiausią vertę."
+            title="DI galimybių auditas"
+            description="Išanalizuojame jūsų procesus ir identifikuojame, kur DI sukurtų didžiausią vertę."
             isActive={activeCard === 0}
             progress={activeCard === 0 ? progress : 0}
             onClick={() => handleCardClick(0)}
@@ -176,7 +176,7 @@ export default function HeroSection() {
           />
           <FeatureCard
             title="Mokymai ir palaikymas"
-            description="Praktiniai mokymai komandai — nuo pagrindų iki kasdienio naudojimo su AI."
+            description="Praktiniai mokymai komandai — nuo pagrindų iki kasdienio naudojimo su DI."
             isActive={activeCard === 2}
             progress={activeCard === 2 ? progress : 0}
             onClick={() => handleCardClick(2)}

@@ -58,7 +58,7 @@ export default function BentoSection() {
                 Aiški vizija, tvarkingi duomenys
               </h3>
               <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                AI įrankiai atskleidžia modelius jūsų darbe, kad galėtumėte susikoncentruoti į tai, kas tikrai svarbu.
+                DI įrankiai atskleidžia modelius jūsų darbe, kad galėtumėte susikoncentruoti į tai, kas tikrai svarbu.
               </p>
             </div>
             <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex items-center justify-center overflow-hidden">
@@ -98,7 +98,7 @@ export default function BentoSection() {
                 Sklandus integravimas
               </h3>
               <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                Visi jūsų mėgstami įrankiai sujungiami ir sustiprinami AI — viename nuosekliame darbo sraute.
+                Visi jūsų mėgstami įrankiai sujungiami ir sustiprinami DI — viename nuosekliame darbo sraute.
               </p>
             </div>
             <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden justify-center items-center relative">
@@ -116,7 +116,7 @@ export default function BentoSection() {
                 Rezultatai, kurie kalba
               </h3>
               <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                Sekite AI diegimo pažangą tiksliai ir paversite duomenis pagrįstais sprendimais, kuriais galima pasitikėti.
+                Sekite DI diegimo pažangą tiksliai ir paversite duomenis pagrįstais sprendimais, kuriais galima pasitikėti.
               </p>
             </div>
             <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden items-center justify-center relative">

@@ -9,7 +9,7 @@ export default function SiteFooter() {
             <div className="text-center text-[#49423D] text-xl font-semibold leading-4 font-sans">Diteka</div>
           </div>
           <div className="text-[rgba(73,66,61,0.90)] text-sm font-medium leading-[18px] font-sans">
-            AI be streso
+            DI be streso
           </div>
 
           {/* Social Icons */}
@@ -45,7 +45,7 @@ export default function SiteFooter() {
               Paslaugos
             </div>
             <div className="flex flex-col justify-end items-start gap-2">
-              {["AI auditas", "Diegimas", "Mokymai", "Konsultacijos", "Palaikymas"].map((item) => (
+              {["DI auditas", "Diegimas", "Mokymai", "Konsultacijos", "Palaikymas"].map((item) => (
                 <div key={item} className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                   {item}
                 </div>

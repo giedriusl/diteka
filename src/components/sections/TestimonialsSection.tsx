@@ -5,21 +5,21 @@ import { useState, useEffect } from "react"
 const testimonials = [
   {
     quote:
-      "Vos per kelias dienas transformavome savo darbo procesus su AI. Viskas buvo paprasta ir greita — komanda nustebo, kaip greitai pradėjome naudoti naujus įrankius.",
+      "Vos per kelias dienas transformavome savo darbo procesus su DI. Viskas buvo paprasta ir greita — komanda nustebo, kaip greitai pradėjome naudoti naujus įrankius.",
     name: "Tomas Paulauskas",
     company: "Direktorius, UAB Agilis",
     image: "/professional-man-avatar-with-beard-and-glasses-loo.jpg",
   },
   {
     quote:
-      "Diteka padėjo mums suprasti, kur AI tikrai gali padėti — ir tai buvo ne ten, kur tikėjomės. Rezultatai viršijo lūkesčius.",
+      "Diteka padėjo mums suprasti, kur DI tikrai gali padėti — ir tai buvo ne ten, kur tikėjomės. Rezultatai viršijo lūkesčius.",
     name: "Rasa Jonikienė",
     company: "Rinkodaros vadovė, Baltica Group",
     image: "/professional-woman-avatar-with-short-brown-hair-an.jpg",
   },
   {
     quote:
-      "Mokymai buvo praktiniai ir aiškūs. Dabar visa komanda naudoja AI įrankius kasdien — be techninio jargono ir streso.",
+      "Mokymai buvo praktiniai ir aiškūs. Dabar visa komanda naudoja DI įrankius kasdien — be techninio jargono ir streso.",
     name: "Mantas Žilinskas",
     company: "IT vadovas, TechNord",
     image: "/professional-person-avatar-with-curly-hair-and-war.jpg",

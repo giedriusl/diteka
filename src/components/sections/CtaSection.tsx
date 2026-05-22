@@ -23,10 +23,10 @@ export default function CtaSection() {
         <div className="w-full max-w-[586px] px-6 py-5 md:py-8 overflow-hidden rounded-lg flex flex-col justify-start items-center gap-6 relative z-20">
           <div className="self-stretch flex flex-col justify-start items-start gap-3">
             <div className="self-stretch text-center text-[#49423D] text-3xl md:text-5xl font-semibold leading-tight md:leading-[56px] font-sans tracking-tight">
-              Pradėkite savo AI kelionę šiandien
+              Pradėkite savo DI kelionę šiandien
             </div>
             <div className="self-stretch text-center text-[#605A57] text-base leading-7 font-sans font-medium">
-              Susisiekite su mumis ir aptarsime, kaip AI gali padėti jūsų verslui,<br />
+              Susisiekite su mumis ir aptarsime, kaip DI gali padėti jūsų verslui,<br />
               — paprastai, be streso ir žingsnis po žingsnio.
             </div>
           </div>

@@ -6,7 +6,7 @@ const faqData = [
   {
     question: "Kas yra Diteka ir kam ji skirta?",
     answer:
-      "Diteka padeda verslui ir žmonėms pradėti naudoti dirbtinį intelektą paprastai ir be streso. Tinkame smulkiam ir vidutiniam verslui, komandoms ir individualiems asmenims, norintiems efektyviau dirbti su AI.",
+      "Diteka padeda verslui ir žmonėms pradėti naudoti dirbtinį intelektą paprastai ir be streso. Tinkame smulkiam ir vidutiniam verslui, komandoms ir individualiems asmenims, norintiems efektyviau dirbti su DI.",
   },
   {
     question: "Ar man reikia techninių žinių?",
@@ -24,9 +24,9 @@ const faqData = [
       "Kaina priklauso nuo projekto apimties ir pasirinktų paslaugų. Susisiekite su mumis ir aptarsime tinkamiausią variantą jūsų poreikiams bei biudžetui.",
   },
   {
-    question: "Ar galiu gauti pagalbą jau naudojant AI įrankius?",
+    question: "Ar galiu gauti pagalbą jau naudojant DI įrankius?",
     answer:
-      "Taip! Teikiame tęstinę pagalbą ir mokymus. Nesvarbu, ar tik pradedate, ar jau naudojate AI — galime padėti žengti toliau ir efektyviau.",
+      "Taip! Teikiame tęstinę pagalbą ir mokymus. Nesvarbu, ar tik pradedate, ar jau naudojate DI — galime padėti žengti toliau ir efektyviau.",
   },
   {
     question: "Kaip pradėti?",
@@ -67,7 +67,7 @@ export default function FaqSection() {
           </div>
           <div className="w-full text-[#605A57] text-base font-normal leading-7 font-sans">
             Raskite atsakymus į dažniausius klausimus<br className="hidden md:block" />
-            apie AI diegimą ir Diteka paslaugas.
+            apie DI diegimą ir Diteka paslaugas.
           </div>
         </div>
 

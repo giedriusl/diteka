@@ -73,7 +73,7 @@ const SmartSimpleBrilliant: React.FC<SmartSimpleBrilliantProps> = ({
                     </div>
                   </div>
                   <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "9px", color: "#92400E" }}>
-                    AI strategijos aptarimas
+                    DI strategijos aptarimas
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@ const SmartSimpleBrilliant: React.FC<SmartSimpleBrilliantProps> = ({
                     </div>
                   </div>
                   <div style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "9px", color: "#0C4A6E" }}>
-                    AI diegimo peržiūra
+                    DI diegimo peržiūra
                   </div>
                 </div>
               </div>

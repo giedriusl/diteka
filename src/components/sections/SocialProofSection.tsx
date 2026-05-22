@@ -38,7 +38,7 @@ export default function SocialProofSection() {
           </div>
           <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
             Mūsų klientai pasiekia daugiau kiekvieną dieną,<br className="hidden sm:block" />
-            nes jų AI įrankiai paprasti, galingi ir aiškūs.
+            nes jų DI įrankiai paprasti, galingi ir aiškūs.
           </div>
         </div>
       </div>

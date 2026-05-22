@@ -5,7 +5,7 @@
     "contact": "Susisiekti"
   },
   "hero": {
-    "headline": "AI į jūsų gyvenimą — paprastai ir be streso",
+    "headline": "DI į jūsų gyvenimą — paprastai ir be streso",
     "subheadline": "Padedame verslui ir žmonėms pradėti naudoti dirbtinį intelektą — žingsnis po žingsnio, be techninio jargono."
   },
   "howItWorks": {
@@ -19,19 +19,19 @@
   },
   "services": {
     "title": "Paslaugos",
-    "consulting": "AI konsultacijos",
-    "consultingDesc": "Analizuojame jūsų poreikius ir randame tinkamus AI sprendimus.",
+    "consulting": "DI konsultacijos",
+    "consultingDesc": "Analizuojame jūsų poreikius ir randame tinkamus DI sprendimus.",
     "training": "Mokymai",
     "trainingDesc": "Praktiniai mokymai komandai — nuo pagrindų iki kasdienio naudojimo.",
     "implementation": "Diegimas",
-    "implementationDesc": "Padedame integruoti AI įrankius į jūsų darbo procesus."
+    "implementationDesc": "Padedame integruoti DI įrankius į jūsų darbo procesus."
   },
   "testimonials": {
     "title": "Ką sako klientai"
   },
   "cta": {
     "title": "Pradėkite šiandien",
-    "subtitle": "Susisiekite ir aptarsime, kaip AI gali padėti jūsų verslui.",
+    "subtitle": "Susisiekite ir aptarsime, kaip DI gali padėti jūsų verslui.",
     "button": "Susisiekti"
   },
   "footer": {

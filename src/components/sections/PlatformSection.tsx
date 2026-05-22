@@ -14,13 +14,13 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
 
 const cards = [
   {
-    title: "AI galimybių auditas",
-    description: "Išanalizuojame jūsų procesus ir\nidentifikuojame, kur AI sukurtų didžiausią vertę.",
+    title: "DI galimybių auditas",
+    description: "Išanalizuojame jūsų procesus ir\nidentifikuojame, kur DI sukurtų didžiausią vertę.",
     gradient: "from-blue-50 to-blue-100",
   },
   {
     title: "Diegimas ir integracija",
-    description: "Įdiegiame tinkamus AI įrankius,\npritaikytus jūsų komandai ir darbo eigai.",
+    description: "Įdiegiame tinkamus DI įrankius,\npritaikytus jūsų komandai ir darbo eigai.",
     gradient: "from-purple-50 to-purple-100",
   },
   {
@@ -60,7 +60,7 @@ export default function PlatformSection() {
             Supaprastinkite savo verslo veiklą
           </div>
           <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Valdykite AI diegimą, analizuokite rezultatus ir bendradarbiaukite su komanda<br />
+            Valdykite DI diegimą, analizuokite rezultatus ir bendradarbiaukite su komanda<br />
             — viskas vienoje galingoje platformoje.
           </div>
         </div>
