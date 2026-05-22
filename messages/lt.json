@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "howItWorks": "Kaip tai veikia",
+    "services": "Paslaugos",
+    "contact": "Susisiekti"
+  },
+  "hero": {
+    "headline": "AI į jūsų gyvenimą — paprastai ir be streso",
+    "subheadline": "Padedame verslui ir žmonėms pradėti naudoti dirbtinį intelektą — žingsnis po žingsnio, be techninio jargono."
+  },
+  "howItWorks": {
+    "title": "Kaip tai veikia",
+    "step1Title": "Susipažįstame",
+    "step1Desc": "Pasakote, kur norite pagerinti darbą ar gyvenimą.",
+    "step2Title": "Planuojame",
+    "step2Desc": "Paruošiame paprastą planą, pritaikytą būtent jums.",
+    "step3Title": "Diegiame",
+    "step3Desc": "Palydime kiekvieną žingsnį — nuo pradžios iki rezultato."
+  },
+  "services": {
+    "title": "Paslaugos",
+    "consulting": "AI konsultacijos",
+    "consultingDesc": "Analizuojame jūsų poreikius ir randame tinkamus AI sprendimus.",
+    "training": "Mokymai",
+    "trainingDesc": "Praktiniai mokymai komandai — nuo pagrindų iki kasdienio naudojimo.",
+    "implementation": "Diegimas",
+    "implementationDesc": "Padedame integruoti AI įrankius į jūsų darbo procesus."
+  },
+  "testimonials": {
+    "title": "Ką sako klientai"
+  },
+  "cta": {
+    "title": "Pradėkite šiandien",
+    "subtitle": "Susisiekite ir aptarsime, kaip AI gali padėti jūsų verslui.",
+    "button": "Susisiekti"
+  },
+  "footer": {
+    "rights": "Visos teisės saugomos."
+  }
+}

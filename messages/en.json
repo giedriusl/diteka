@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "howItWorks": "How it works",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "hero": {
+    "headline": "AI in your life — simply and without stress",
+    "subheadline": "We help businesses and individuals start using artificial intelligence — step by step, without the technical jargon."
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "step1Title": "We meet",
+    "step1Desc": "You tell us where you want to improve your work or life.",
+    "step2Title": "We plan",
+    "step2Desc": "We create a simple plan tailored specifically to you.",
+    "step3Title": "We implement",
+    "step3Desc": "We guide every step — from start to result."
+  },
+  "services": {
+    "title": "Services",
+    "consulting": "AI consulting",
+    "consultingDesc": "We analyse your needs and find the right AI solutions.",
+    "training": "Training",
+    "trainingDesc": "Hands-on training for your team — from basics to daily use.",
+    "implementation": "Implementation",
+    "implementationDesc": "We help integrate AI tools into your workflows."
+  },
+  "testimonials": {
+    "title": "What clients say"
+  },
+  "cta": {
+    "title": "Start today",
+    "subtitle": "Get in touch and we'll discuss how AI can help your business.",
+    "button": "Get in touch"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
