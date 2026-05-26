@@ -1,9 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import type { Dispatch } from 'react'
 import type { FormState, AssessmentAction } from '@/lib/assessment/types'
 import { getT, tmpl } from '@/lib/assessment/translations'
-import { computeFullScore, calculateMigrationScore } from '@/lib/assessment/scoring'
+import { computeFullScore, calculateMigrationScore, buildWebhookPayload } from '@/lib/assessment/scoring'
 import { ScoreArc } from '../ScoreArc'
 
 interface Step7Props {
@@ -13,9 +14,40 @@ interface Step7Props {
 
 export function Step7ThankYou({ state, dispatch }: Step7Props) {
   const t = getT(state.language)
+  const [downloading, setDownloading] = useState(false)
+
   const scoreResult = computeFullScore(state)
   const migrationResult = state.dbModule.enabled ? calculateMigrationScore(state.dbModule) : null
   const bandLabel = t.step7.bands[scoreResult.band]
+
+  async function downloadPdf() {
+    setDownloading(true)
+    try {
+      const payload = buildWebhookPayload(
+        state,
+        scoreResult,
+        migrationResult,
+        new Date().toISOString(),
+      )
+      const res = await fetch('/api/assessment/report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error('PDF generation failed')
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = `Diteka_Automation_Report.pdf`
+      a.click()
+      URL.revokeObjectURL(url)
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setDownloading(false)
+    }
+  }
 
   const topProcess = scoreResult.processes
     .filter(p => p.knockout === null)
@@ -74,6 +106,22 @@ export function Step7ThankYou({ state, dispatch }: Step7Props) {
           {t.step7.calendarCta}
         </a>
         <p className="text-xs text-[#605A57]">{t.step7.calendarSubtext}</p>
+
+        <button
+          type="button"
+          onClick={downloadPdf}
+          disabled={downloading}
+          className="mt-2 inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg border border-[#E0DEDB] bg-white px-6 text-sm font-medium text-[#37322F] transition-all hover:border-[#605A57] hover:bg-[#F7F5F3] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#37322F]/30"
+        >
+          {downloading ? (
+            <>
+              <span className="size-4 animate-spin rounded-full border-2 border-[#37322F]/20 border-t-[#37322F]" aria-hidden="true" />
+              Generating…
+            </>
+          ) : (
+            'Download PDF Report'
+          )}
+        </button>
       </div>
 
       <button
