@@ -26,15 +26,18 @@ function volumeWeight(d2: number): number {
   return VOLUME_WEIGHTS[d2] ?? 1.0
 }
 
-// ─── Sector benchmarks (hard-coded until N≥20) ────────────────────────────────
+// ─── Sector benchmarks ───────────────────────────────────────────────────────
+// Source: McKinsey Global Institute, "A Future That Works" (Jan 2017)
+// Figures = share of work activities technically automatable with demonstrated tech
+// https://www.mckinsey.com/featured-insights/digital-disruption/harnessing-automation-for-a-future-that-works
 
 const SECTOR_BENCHMARKS: Record<SectorKey, number> = {
-  manufacturing: 61,
-  logistics: 67,
-  wholesale: 59,
-  services: 55,
-  retail: 52,
-  other: 58,
+  manufacturing: 60, // MGI 2017: 60%
+  logistics: 57,     // MGI 2017: Transport & Warehousing 57%
+  wholesale: 44,     // MGI 2017: Wholesale Trade 44%
+  services: 35,      // MGI 2017: Professional & Technical Services 35%
+  retail: 52,        // McKinsey Retail Practice 2019 (citing MGI): 52%
+  other: 50,         // MGI 2017: global cross-economy average ~50%
 }
 
 // ─── Knockout check ───────────────────────────────────────────────────────────
