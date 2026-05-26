@@ -240,7 +240,7 @@ export function ReportDocument({ payload }: { payload: WebhookPayload }) {
             <Text style={[s.scoreNumber, { color }]}>{payload.company_score}%</Text>
             <Text style={[s.scoreBand, { color }]}>{BAND_LABELS[band]}</Text>
             <Text style={s.benchmarkLine}>
-              Companies in {SECTOR_LABELS[payload.sector]} average {benchmark}% automation potential. You scored {payload.company_score}%.
+              Companies in {SECTOR_LABELS[payload.sector]} average {benchmark}% automation potential. You scored {payload.company_score}%. (McKinsey MGI, 2017)
             </Text>
             {totalHours > 0 && (
               <Text style={s.benchmarkLine}>

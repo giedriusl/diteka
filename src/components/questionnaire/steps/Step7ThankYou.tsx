@@ -75,6 +75,15 @@ export function Step7ThankYou({ state, dispatch }: Step7Props) {
             benchmark: scoreResult.benchmarkPercent,
             score: scoreResult.companyScore,
           })}
+          {' '}
+          <a
+            href="https://www.mckinsey.com/featured-insights/digital-disruption/harnessing-automation-for-a-future-that-works"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-[#9ca3af] underline underline-offset-2 hover:text-[#605A57]"
+          >
+            McKinsey MGI, 2017
+          </a>
         </p>
         {hoursSaved > 0 && (
           <p>
