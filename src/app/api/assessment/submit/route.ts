@@ -22,8 +22,8 @@ export async function POST(request: NextRequest) {
 
   const webhookUrl = process.env.N8N_WEBHOOK_URL
   if (!webhookUrl) {
-    console.error('[assessment/submit] N8N_WEBHOOK_URL not configured')
-    return NextResponse.json({ error: 'Webhook not configured' }, { status: 500 })
+    console.warn('[assessment/submit] N8N_WEBHOOK_URL not set — skipping webhook forward')
+    return NextResponse.json({ ok: true })
   }
 
   try {
