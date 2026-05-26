@@ -48,8 +48,8 @@ export function NavigationButtons({
 
       {primaryAction && (
         <button
-          type={onSubmit ? 'submit' : 'button'}
-          onClick={onSubmit ? undefined : onNext}
+          type="button"
+          onClick={primaryAction}
           disabled={primaryDisabled}
           aria-busy={isSubmitting}
           className={cn(
