@@ -24,7 +24,7 @@ export default function HomePage() {
             {/* <SocialProofSection /> — hidden until real clients (see TODO.md) */}
             <BentoSection />
             <PlatformSection />
-            <TestimonialsSection />
+            {/* <TestimonialsSection /> */}
             <FaqSection />
             <CtaSection />
             <SiteFooter />
