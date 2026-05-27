@@ -6,12 +6,12 @@ import { getT } from '@/lib/assessment/translations'
 import { ProcessForm, processComplete } from '../ProcessForm'
 import { NavigationButtons } from '../NavigationButtons'
 
-interface Step2Props {
+interface Step3Props {
   state: FormState
   dispatch: Dispatch<AssessmentAction>
 }
 
-export function Step2Process({ state, dispatch }: Step2Props) {
+export function Step3Process({ state, dispatch }: Step3Props) {
   const t = getT(state.language)
   const canAdvance = processComplete(state.processes[0])
 
@@ -22,8 +22,8 @@ export function Step2Process({ state, dispatch }: Step2Props) {
       </h2>
       <ProcessForm processIndex={0} state={state} dispatch={dispatch} />
       <NavigationButtons
-        onBack={() => dispatch({ type: 'SET_STEP', step: 1 })}
-        onNext={() => dispatch({ type: 'SET_STEP', step: 3 })}
+        onBack={() => dispatch({ type: 'SET_STEP', step: 2 })}
+        onNext={() => dispatch({ type: 'SET_STEP', step: 4 })}
         canAdvance={canAdvance}
         nextLabel={t.nav.next}
         backLabel={t.nav.back}
