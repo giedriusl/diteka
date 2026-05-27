@@ -18,10 +18,7 @@ export function Step2DirectionalScore({ state, dispatch }: Step2Props) {
   const [emailValue, setEmailValue] = useState('')
   const [emailSent, setEmailSent] = useState(false)
 
-  const score = state.directional_score ?? calculateDirectionalScore(
-    state.c1 ?? 3,
-    state.c2 ?? 3,
-  )
+  const score = calculateDirectionalScore(state.c1 ?? 3, state.c2 ?? 3)
   const band = getScoreBand(score)
   const benchmark = state.sector ? getAutomationBenchmark(state.sector) : 50
 
@@ -68,7 +65,10 @@ export function Step2DirectionalScore({ state, dispatch }: Step2Props) {
       <div className="flex flex-col gap-3">
         <button
           type="button"
-          onClick={() => dispatch({ type: 'SET_STEP', step: 3 })}
+          onClick={() => {
+            dispatch({ type: 'SET_DIRECTIONAL_SCORE', score })
+            dispatch({ type: 'SET_STEP', step: 3 })
+          }}
           className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-[#37322F] px-5 text-sm font-medium text-[#FBFAF9] transition-all hover:bg-[#605A57] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#37322F]/30"
         >
           {t.step2_directional.primaryCta}
