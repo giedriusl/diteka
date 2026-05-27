@@ -75,7 +75,7 @@ export function Step6EmailGate({ state, dispatch }: Step6Props) {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <h2 className="font-serif text-2xl font-semibold text-[#37322F]">
-          {tmpl(t.step6.teaserHeadline, { score: scoreResult.companyScore })}
+          {t.step6.headline}
         </h2>
         <p className="text-sm text-[#605A57] leading-relaxed">{t.step6.subtext}</p>
       </div>

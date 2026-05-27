@@ -4,8 +4,7 @@ import { useState } from 'react'
 import type { Dispatch } from 'react'
 import type { FormState, AssessmentAction } from '@/lib/assessment/types'
 import { getT, tmpl } from '@/lib/assessment/translations'
-import { calculateProcessScore, getScoreBand, computeFullScore } from '@/lib/assessment/scoring'
-import { ScoreArc } from '../ScoreArc'
+import { calculateProcessScore } from '@/lib/assessment/scoring'
 import { ProcessForm, processComplete } from '../ProcessForm'
 import { NavigationButtons } from '../NavigationButtons'
 
@@ -20,8 +19,6 @@ export function Step4ProcessScore({ state, dispatch }: Step4Props) {
 
   const result = calculateProcessScore(state.processes[0], 0)
   const knockout = result.knockout
-  const band = getScoreBand(result.processScore)
-  const scoreResult = computeFullScore(state)
   const canSaveProcess = formIndex !== null && processComplete(state.processes[formIndex])
 
   function saveProcess() {
@@ -68,10 +65,9 @@ export function Step4ProcessScore({ state, dispatch }: Step4Props) {
         </div>
       ) : (
         <div className="flex flex-col items-center gap-4">
-          <h2 className="font-serif text-xl font-semibold text-[#37322F] text-center">
-            {tmpl(t.step3.teaserHeadline, { n: 1, score: result.processScore })}
-          </h2>
-          <ScoreArc score={result.processScore} band={band} />
+          <p className="max-w-sm text-center text-sm font-medium text-[#37322F]">
+            {t.step3.scoreLocked}
+          </p>
           <p className="max-w-sm text-center text-sm text-[#605A57] leading-relaxed">
             {t.step3.teaserSubtext}
           </p>
@@ -80,12 +76,6 @@ export function Step4ProcessScore({ state, dispatch }: Step4Props) {
 
       <h3 className="font-medium text-[#37322F]">{t.step4.headline}</h3>
       <p className="text-sm text-[#605A57] leading-relaxed">{t.step4.incentive}</p>
-
-      <div className="rounded-xl border border-[#E0DEDB] bg-[#F7F5F3] px-4 py-3">
-        <p className="text-sm font-medium text-[#37322F]">
-          {tmpl(t.step4.overallScore, { score: scoreResult.companyScore })}
-        </p>
-      </div>
 
       <div className="flex flex-col gap-2">
         {state.activeProcessCount < 2 && (

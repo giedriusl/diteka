@@ -5,6 +5,7 @@ import type { FormState, AssessmentAction, ProcessAnswers } from '@/lib/assessme
 import { getT } from '@/lib/assessment/translations'
 import { QuestionBlock } from './QuestionBlock'
 import { LikertScale } from './LikertScale'
+import { ProcessNameCombo } from './ProcessNameCombo'
 
 const DIMS = ['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8'] as const
 type DimKey = (typeof DIMS)[number]
@@ -45,14 +46,14 @@ export function ProcessForm({ processIndex, state, dispatch }: ProcessFormProps)
           {t.step2.processName.label}
           <span aria-hidden="true" className="ml-1 text-[#ea580c]">*</span>
         </label>
-        <input
+        <ProcessNameCombo
           id={`${pfx}-name`}
-          type="text"
+          sector={state.sector}
+          language={state.language}
           value={p.name}
-          onChange={e => set('name', e.target.value)}
-          placeholder={t.step2.processName.placeholder}
-          className="h-10 w-full rounded-lg border border-[#E0DEDB] bg-white px-3 text-sm text-[#37322F] placeholder:text-[#9ca3af] focus:outline-none focus:ring-2 focus:ring-[#37322F]/30"
-          required
+          onChange={v => set('name', v)}
+          selectPlaceholder={t.step2.processName.placeholder}
+          textPlaceholder={t.step2.processName.customPlaceholder}
         />
       </div>
 

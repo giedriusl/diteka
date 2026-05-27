@@ -75,8 +75,9 @@ const en = {
     headline: "Let's assess your first process",
     headlineN: "Let's assess process {n}",
     processName: {
-      label: 'What is the name of this process?',
-      placeholder: "e.g. 'Invoice processing', 'Order confirmation', 'Payroll'",
+      label: 'Which process would you like to assess?',
+      placeholder: 'Select a process or type your own…',
+      customPlaceholder: 'Or type a custom process name',
     },
     D1: {
       label: 'How are decisions made in this process?',
@@ -150,6 +151,7 @@ const en = {
 
   step3: {
     teaserHeadline: 'Process {n} preliminary score: {score}%',
+    scoreLocked: 'Your process score is calculated — reveal it with your report.',
     teaserSubtext:
       'Complete the full assessment to receive your detailed report, benchmark comparison, and time-savings estimate.',
     cta: 'Continue →',
@@ -220,6 +222,7 @@ const en = {
 
   step6: {
     teaserHeadline: 'Your automation potential: {score}%',
+    headline: 'Reveal your automation potential',
     subtext:
       'Enter your email to receive your full report — score breakdown, benchmark comparison, and recommended next steps. Sent within 60 seconds.',
     emailLabel: 'Email address',
@@ -357,8 +360,9 @@ const lt = {
     headline: 'Įvertinkime pirmą procesą',
     headlineN: 'Įvertinkime {n} procesą',
     processName: {
-      label: 'Kaip vadinate šį procesą?',
-      placeholder: 'pvz. „Sąskaitų apdorojimas", „Užsakymų patvirtinimas", „Atlyginimų skaičiavimas"',
+      label: 'Kurį procesą norėtumėte įvertinti?',
+      placeholder: 'Pasirinkite procesą arba įveskite savo…',
+      customPlaceholder: 'Arba įveskite proceso pavadinimą',
     },
     D1: {
       label: 'Kaip priimami sprendimai šiame procese?',
@@ -432,6 +436,7 @@ const lt = {
 
   step3: {
     teaserHeadline: '{n} proceso preliminarus balas: {score}%',
+    scoreLocked: 'Jūsų proceso balas apskaičiuotas — atskleiskite jį kartu su ataskaita.',
     teaserSubtext:
       'Užbaikite visą vertinimą ir gaukite išsamią ataskaitą, lyginamąją analizę ir laiko taupymo įvertinimą.',
     cta: 'Tęsti →',
@@ -502,6 +507,7 @@ const lt = {
 
   step6: {
     teaserHeadline: 'Jūsų automatizavimo potencialas: {score}%',
+    headline: 'Atskleiskite savo automatizavimo potencialą',
     subtext:
       'Įveskite el. paštą ir gaukite išsamią ataskaitą — balų analizę, lyginamąją analizę ir rekomenduojamus tolesnius žingsnius. Atsiųsime per 60 sekundžių.',
     emailLabel: 'El. pašto adresas',
