@@ -103,11 +103,17 @@ export type StepIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 export interface FormState {
   step: StepIndex
   language: Language
-  // Step 1
+  stage: 1 | 2
+  // Step 1 — company snapshot
+  company_name: string
   sector: SectorKey | null
   companySize: CompanySizeKey | null
   painPoint: PainPointKey | null
-  // Steps 2 & 4
+  c1: number | null            // Q1.4 rule-basedness proxy (1–5)
+  c2: number | null            // Q1.5 input digitisation proxy (1–5)
+  directional_score: number | null
+  stage1_email: string | null  // collected via Stage 1 secondary CTA
+  // Steps 3 & 4
   processes: [ProcessAnswers, ProcessAnswers, ProcessAnswers]
   activeProcessCount: 1 | 2 | 3
   // Step 5
@@ -123,9 +129,15 @@ export interface FormState {
 export type AssessmentAction =
   | { type: 'SET_LANGUAGE'; language: Language }
   | { type: 'SET_STEP'; step: StepIndex }
+  | { type: 'SET_STAGE'; stage: 1 | 2 }
+  | { type: 'SET_COMPANY_NAME'; name: string }
   | { type: 'SET_SECTOR'; sector: SectorKey }
   | { type: 'SET_COMPANY_SIZE'; size: CompanySizeKey }
   | { type: 'SET_PAIN_POINT'; painPoint: PainPointKey }
+  | { type: 'SET_C1'; value: number }
+  | { type: 'SET_C2'; value: number }
+  | { type: 'SET_DIRECTIONAL_SCORE'; score: number }
+  | { type: 'SET_STAGE1_EMAIL'; email: string }
   | { type: 'SET_PROCESS_FIELD'; index: 0 | 1 | 2; field: keyof ProcessAnswers; value: string | number | null }
   | { type: 'SET_ACTIVE_PROCESS_COUNT'; count: 1 | 2 | 3 }
   | { type: 'SET_DB_ENABLED'; enabled: boolean }
@@ -150,6 +162,7 @@ export interface WebhookProcessPayload {
 export interface WebhookPayload {
   email: string
   language: Language
+  company_name: string
   sector: SectorKey
   company_size: CompanySizeKey
   pain_point: PainPointKey

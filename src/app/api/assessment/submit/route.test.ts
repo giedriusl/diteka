@@ -7,6 +7,7 @@ function makePayload(overrides: Partial<WebhookPayload> = {}): WebhookPayload {
   return {
     email: 'user@example.com',
     language: 'en',
+    company_name: 'UAB Test',
     sector: 'manufacturing',
     company_size: 's',
     pain_point: 'staff',
@@ -95,11 +96,11 @@ describe('POST /api/assessment/submit', () => {
     expect(res.status).toBe(400)
   })
 
-  it('returns 500 when N8N_WEBHOOK_URL is not set', async () => {
+  it('returns 200 ok when N8N_WEBHOOK_URL is not set (graceful degradation)', async () => {
     const res = await callRoute(makePayload())
-    expect(res.status).toBe(500)
+    expect(res.status).toBe(200)
     const body = await res.json()
-    expect(body.error).toMatch(/not configured/i)
+    expect(body.ok).toBe(true)
   })
 
   it('forwards payload to n8n and returns { ok: true }', async () => {

@@ -40,6 +40,15 @@ const SECTOR_BENCHMARKS: Record<SectorKey, number> = {
   other: 50,         // MGI 2017: global cross-economy average ~50%
 }
 
+// ─── Directional score (Stage 1 — C1 and C2 signals only) ────────────────────
+// Range: 20% (both=1) to 100% (both=5)
+// Formula from spec §2.4
+
+export function calculateDirectionalScore(c1: number, c2: number): number {
+  const raw = (c1 * 0.25) + (c2 * 0.20)
+  return Math.round((raw / 2.25) * 100)
+}
+
 // ─── Knockout check ───────────────────────────────────────────────────────────
 
 export function checkKnockout(answers: ProcessAnswers): KnockoutReason {
@@ -210,6 +219,7 @@ export function buildWebhookPayload(
   return {
     email: state.email,
     language: state.language,
+    company_name: state.company_name,
     sector: state.sector ?? 'other',
     company_size: state.companySize ?? 'xs',
     pain_point: state.painPoint ?? 'other',

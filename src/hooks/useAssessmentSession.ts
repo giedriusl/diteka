@@ -14,6 +14,12 @@ export function assessmentReducer(state: FormState, action: AssessmentAction): F
     case 'SET_STEP':
       return { ...state, step: action.step }
 
+    case 'SET_STAGE':
+      return { ...state, stage: action.stage }
+
+    case 'SET_COMPANY_NAME':
+      return { ...state, company_name: action.name }
+
     case 'SET_SECTOR':
       return { ...state, sector: action.sector }
 
@@ -22,6 +28,18 @@ export function assessmentReducer(state: FormState, action: AssessmentAction): F
 
     case 'SET_PAIN_POINT':
       return { ...state, painPoint: action.painPoint }
+
+    case 'SET_C1':
+      return { ...state, c1: action.value }
+
+    case 'SET_C2':
+      return { ...state, c2: action.value }
+
+    case 'SET_DIRECTIONAL_SCORE':
+      return { ...state, directional_score: action.score }
+
+    case 'SET_STAGE1_EMAIL':
+      return { ...state, stage1_email: action.email }
 
     case 'SET_PROCESS_FIELD': {
       const processes = state.processes.map((p, i) =>

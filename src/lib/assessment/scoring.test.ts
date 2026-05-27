@@ -4,6 +4,7 @@ import {
   calculateProcessScore,
   calculateCompanyScore,
   calculateMigrationScore,
+  calculateDirectionalScore,
   getScoreBand,
   getMigrationBand,
   getAutomationBenchmark,
@@ -40,9 +41,15 @@ function makeFormState(overrides: Partial<FormState> = {}): FormState {
   return {
     step: 1,
     language: 'en',
+    stage: 1,
+    company_name: 'Test Company',
     sector: 'manufacturing',
     companySize: 's',
     painPoint: 'staff',
+    c1: null,
+    c2: null,
+    directional_score: null,
+    stage1_email: null,
     processes: [makeProcess(), emptyProcess(), emptyProcess()],
     activeProcessCount: 1,
     dbModule: { enabled: false, M1: null, M2: null, M3: null, M4: null, M5: [] },
@@ -52,6 +59,31 @@ function makeFormState(overrides: Partial<FormState> = {}): FormState {
     ...overrides,
   }
 }
+
+// ─── calculateDirectionalScore ───────────────────────────────────────────────
+
+describe('calculateDirectionalScore', () => {
+  it('returns 20% when both signals are 1', () => {
+    // raw = (1×0.25)+(1×0.20) = 0.45 → 0.45/2.25×100 = 20
+    expect(calculateDirectionalScore(1, 1)).toBe(20)
+  })
+
+  it('returns 100% when both signals are 5', () => {
+    // raw = (5×0.25)+(5×0.20) = 2.25 → 2.25/2.25×100 = 100
+    expect(calculateDirectionalScore(5, 5)).toBe(100)
+  })
+
+  it('C1 (rule-basedness) has higher weight than C2 (digitisation)', () => {
+    const highC1 = calculateDirectionalScore(5, 1)
+    const highC2 = calculateDirectionalScore(1, 5)
+    expect(highC1).toBeGreaterThan(highC2)
+  })
+
+  it('calculates midpoint correctly', () => {
+    // raw = (3×0.25)+(3×0.20) = 0.75+0.60 = 1.35 → 1.35/2.25×100 = 60
+    expect(calculateDirectionalScore(3, 3)).toBe(60)
+  })
+})
 
 // ─── checkKnockout ────────────────────────────────────────────────────────────
 
@@ -292,12 +324,12 @@ describe('getMigrationBand', () => {
 
 describe('getAutomationBenchmark', () => {
   it.each([
-    ['manufacturing', 61],
-    ['logistics',     67],
-    ['wholesale',     59],
-    ['services',      55],
+    ['manufacturing', 60],
+    ['logistics',     57],
+    ['wholesale',     44],
+    ['services',      35],
     ['retail',        52],
-    ['other',         58],
+    ['other',         50],
   ] as const)('sector %s → %d%%', (sector, expected) => {
     expect(getAutomationBenchmark(sector)).toBe(expected)
   })
@@ -312,7 +344,7 @@ describe('computeFullScore', () => {
     expect(result.processes).toHaveLength(1)
     expect(result.companyScore).toBeGreaterThan(0)
     expect(result.band).toBeDefined()
-    expect(result.benchmarkPercent).toBe(61) // manufacturing benchmark
+    expect(result.benchmarkPercent).toBe(60) // manufacturing benchmark (MGI 2017)
   })
 
   it('respects activeProcessCount — ignores processes beyond count', () => {
@@ -355,6 +387,7 @@ describe('buildWebhookPayload', () => {
 
     expect(payload.email).toBe('user@example.com')
     expect(payload.language).toBe('en')
+    expect(payload.company_name).toBe('Test Company')
     expect(payload.sector).toBe('manufacturing')
     expect(payload.company_size).toBe('s')
     expect(payload.processes).toHaveLength(1)

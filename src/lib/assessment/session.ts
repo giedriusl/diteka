@@ -14,9 +14,15 @@ const emptyProcess: ProcessAnswers = {
 export const initialFormState: FormState = {
   step: 0,
   language: 'en',
+  stage: 1,
+  company_name: '',
   sector: null,
   companySize: null,
   painPoint: null,
+  c1: null,
+  c2: null,
+  directional_score: null,
+  stage1_email: null,
   processes: [
     { ...emptyProcess },
     { ...emptyProcess },

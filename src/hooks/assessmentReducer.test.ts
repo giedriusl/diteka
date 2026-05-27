@@ -33,6 +33,44 @@ describe('assessmentReducer', () => {
     expect(next.painPoint).toBe('errors')
   })
 
+  it('SET_STAGE updates stage', () => {
+    const next = assessmentReducer(state(), { type: 'SET_STAGE', stage: 2 })
+    expect(next.stage).toBe(2)
+  })
+
+  it('SET_COMPANY_NAME updates company_name', () => {
+    const next = assessmentReducer(state(), { type: 'SET_COMPANY_NAME', name: 'UAB Test' })
+    expect(next.company_name).toBe('UAB Test')
+  })
+
+  it('SET_C1 updates c1', () => {
+    const next = assessmentReducer(state(), { type: 'SET_C1', value: 4 })
+    expect(next.c1).toBe(4)
+  })
+
+  it('SET_C2 updates c2', () => {
+    const next = assessmentReducer(state(), { type: 'SET_C2', value: 3 })
+    expect(next.c2).toBe(3)
+  })
+
+  it('SET_DIRECTIONAL_SCORE updates directional_score', () => {
+    const next = assessmentReducer(state(), { type: 'SET_DIRECTIONAL_SCORE', score: 72 })
+    expect(next.directional_score).toBe(72)
+  })
+
+  it('SET_STAGE1_EMAIL updates stage1_email', () => {
+    const next = assessmentReducer(state(), { type: 'SET_STAGE1_EMAIL', email: 'early@test.com' })
+    expect(next.stage1_email).toBe('early@test.com')
+  })
+
+  it('RESET preserves language', () => {
+    const modified = state({ step: 5, language: 'lt', company_name: 'UAB Test' })
+    const next = assessmentReducer(modified, { type: 'RESET' })
+    expect(next.step).toBe(0)
+    expect(next.language).toBe('lt')
+    expect(next.company_name).toBe('')
+  })
+
   it('SET_PROCESS_FIELD updates correct process at given index', () => {
     const next = assessmentReducer(state(), {
       type: 'SET_PROCESS_FIELD', index: 1, field: 'D1', value: 4,

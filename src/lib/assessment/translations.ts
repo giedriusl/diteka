@@ -11,6 +11,26 @@ const en = {
 
   step1: {
     headline: "Let's start with some context about your company",
+    companyName: {
+      label: 'What is the name of your company?',
+      placeholder: 'e.g. UAB Example',
+    },
+    c1: {
+      label: "In general, how much of your team's daily work follows fixed, predictable rules rather than relying on judgment?",
+      1: 'Almost all of it is judgment-based — every situation is different',
+      2: 'Mostly judgment, with some routine tasks',
+      3: 'Roughly half routine rules, half judgment',
+      4: 'Mostly predictable and rule-based, with occasional exceptions',
+      5: 'Almost entirely rule-based — we do the same things the same way every time',
+    },
+    c2: {
+      label: 'Overall, how much of your operational data arrives digitally rather than on paper or by phone?',
+      1: 'Almost everything is paper or phone',
+      2: 'Mostly paper / phone, some emails or scanned documents',
+      3: 'Roughly half digital, half paper / phone',
+      4: 'Mostly digital (emails, forms, systems), occasional paper',
+      5: 'Almost entirely digital — data comes from systems or online forms',
+    },
     companySize: {
       label: 'How many employees does your company have?',
       xs: '1–10',
@@ -36,6 +56,19 @@ const en = {
       volume: "Can't keep up with order volume",
       other: 'Other',
     },
+  },
+
+  step2_directional: {
+    headline: '~{score}% estimated automation potential',
+    benchmark: 'Companies in your sector average {benchmark}% automation potential.',
+    benchmarkSource: 'McKinsey MGI, 2017',
+    disclaimer: 'This is a directional estimate based on company-wide signals. Assess a specific process below to get your accurate score.',
+    primaryCta: 'Get my accurate score — assess a process →',
+    secondaryCta: 'Email me this estimate instead',
+    emailLabel: 'Your email address',
+    emailPlaceholder: 'you@company.com',
+    emailSubmit: 'Send estimate →',
+    emailSent: 'Sent. You can still get your accurate score by continuing below.',
   },
 
   step2: {
@@ -231,6 +264,8 @@ const en = {
 
   progress: {
     step: 'Step {current} of {total}',
+    stage1Label: 'Stage 1: Company Snapshot',
+    stage2Label: 'Stage 2: Process Assessment',
   },
 
   errors: {
@@ -257,6 +292,26 @@ const lt = {
 
   step1: {
     headline: 'Pradėkime nuo konteksto apie jūsų įmonę',
+    companyName: {
+      label: 'Koks jūsų įmonės pavadinimas?',
+      placeholder: 'pvz. UAB Pavyzdys',
+    },
+    c1: {
+      label: 'Apskritai, kiek jūsų komandos kasdienio darbo atliekama pagal fiksuotas, nuspėjamas taisykles, o ne remiantis sprendimu?',
+      1: 'Beveik viskas paremta sprendimu — kiekviena situacija skirtinga',
+      2: 'Daugiausia sprendimas, su kai kuriais rutininiais darbais',
+      3: 'Maždaug pusė rutininių taisyklių, pusė sprendimų',
+      4: 'Daugiausia nuspėjama ir taisyklėmis paremta, su retomis išimtimis',
+      5: 'Beveik visiškai taisyklėmis paremta — tą patį darome tuo pačiu būdu',
+    },
+    c2: {
+      label: 'Apskritai, kiek jūsų veiklos duomenų gaunama skaitmenine forma, o ne popieriuje ar telefonu?',
+      1: 'Beveik viskas — popierius ar telefonas',
+      2: 'Daugiausia popierius / telefonas, šiek tiek el. laiškų ar nuskaitytų dokumentų',
+      3: 'Maždaug pusė skaitmeninis, pusė popierius / telefonas',
+      4: 'Daugiausia skaitmeninis (el. laiškai, formos, sistemos), kartais popierius',
+      5: 'Beveik visiškai skaitmeninis — duomenys gaunami iš sistemų ar internetinių formų',
+    },
     companySize: {
       label: 'Kiek darbuotojų turi jūsų įmonė?',
       xs: '1–10',
@@ -282,6 +337,19 @@ const lt = {
       volume: 'Nespėjame apdoroti užsakymų',
       other: 'Kita',
     },
+  },
+
+  step2_directional: {
+    headline: '~{score}% vertinamas automatizavimo potencialas',
+    benchmark: 'Jūsų sektoriaus įmonės vidutiniškai pasiekia {benchmark}% automatizavimo potencialo.',
+    benchmarkSource: 'McKinsey MGI, 2017',
+    disclaimer: 'Tai kryptinis įvertis, pagrįstas visos įmonės signalais. Įvertinkite konkretų procesą žemiau ir gaukite tikslų balą.',
+    primaryCta: 'Gauti tikslų balą — įvertinti procesą →',
+    secondaryCta: 'Išsiųskite man šį įvertį el. paštu',
+    emailLabel: 'El. pašto adresas',
+    emailPlaceholder: 'jusu@imone.lt',
+    emailSubmit: 'Siųsti įvertį →',
+    emailSent: 'Išsiųsta. Vis dar galite gauti tikslų balą tęsdami žemiau.',
   },
 
   step2: {
@@ -480,6 +548,8 @@ const lt = {
 
   progress: {
     step: '{current} žingsnis iš {total}',
+    stage1Label: '1 etapas: Įmonės apžvalga',
+    stage2Label: '2 etapas: Procesų vertinimas',
   },
 
   errors: {
