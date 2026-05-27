@@ -1,39 +1,7 @@
 "use client"
 
 import { useState } from "react"
-
-const faqData = [
-  {
-    question: "Kas yra Diteka ir kam ji skirta?",
-    answer:
-      "Diteka padeda verslui ir žmonėms pradėti naudoti dirbtinį intelektą paprastai ir be streso. Tinkame smulkiam ir vidutiniam verslui, komandoms ir individualiems asmenims, norintiems efektyviau dirbti su DI.",
-  },
-  {
-    question: "Ar man reikia techninių žinių?",
-    answer:
-      "Ne. Mūsų metodika skirta žmonėms be programavimo patirties. Dirbame paprastai, be techninio jargono — paaiškinsime viską suprantama kalba.",
-  },
-  {
-    question: "Kaip vyksta bendradarbiavimas?",
-    answer:
-      "Pradedame nuo audito — išsiaiškiname jūsų poreikius ir procesus. Tada paruošiame planą ir žingsnis po žingsnio palydime iki rezultato. Visas procesas vyksta jūsų patogiu tempu.",
-  },
-  {
-    question: "Kiek kainuoja paslaugos?",
-    answer:
-      "Kaina priklauso nuo projekto apimties ir pasirinktų paslaugų. Susisiekite su mumis ir aptarsime tinkamiausią variantą jūsų poreikiams bei biudžetui.",
-  },
-  {
-    question: "Ar galiu gauti pagalbą jau naudojant DI įrankius?",
-    answer:
-      "Taip! Teikiame tęstinę pagalbą ir mokymus. Nesvarbu, ar tik pradedate, ar jau naudojate DI — galime padėti žengti toliau ir efektyviau.",
-  },
-  {
-    question: "Kaip pradėti?",
-    answer:
-      "Paprastai! Parašykite mums arba užpildykite kontaktų formą. Per 24 valandas susisieksime ir aptarsime jūsų poreikius.",
-  },
-]
+import { useTranslations } from "next-intl"
 
 function ChevronDownIcon({ className }: { className?: string }) {
   return (
@@ -51,7 +19,17 @@ function ChevronDownIcon({ className }: { className?: string }) {
 }
 
 export default function FaqSection() {
+  const t = useTranslations("faq")
   const [openItems, setOpenItems] = useState<number[]>([])
+
+  const faqData = [
+    { question: t("q1"), answer: t("a1") },
+    { question: t("q2"), answer: t("a2") },
+    { question: t("q3"), answer: t("a3") },
+    { question: t("q4"), answer: t("a4") },
+    { question: t("q5"), answer: t("a5") },
+    { question: t("q6"), answer: t("a6") },
+  ]
 
   const toggleItem = (index: number) => {
     setOpenItems((prev) => (prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]))
@@ -63,11 +41,10 @@ export default function FaqSection() {
         {/* Left Column */}
         <div className="w-full lg:flex-1 flex flex-col justify-center items-start gap-4 lg:py-5">
           <div className="w-full flex flex-col justify-center text-[#49423D] font-semibold leading-tight md:leading-[44px] font-sans text-4xl tracking-tight">
-            Dažniausiai užduodami klausimai
+            {t("heading")}
           </div>
           <div className="w-full text-[#605A57] text-base font-normal leading-7 font-sans">
-            Raskite atsakymus į dažniausius klausimus<br className="hidden md:block" />
-            apie DI diegimą ir Diteka paslaugas.
+            {t("subheading")}
           </div>
         </div>
 

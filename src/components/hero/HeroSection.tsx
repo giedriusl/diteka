@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import { useTranslations } from "next-intl"
 
 function FeatureCard({
   title,
@@ -43,6 +44,7 @@ function FeatureCard({
 }
 
 export default function HeroSection() {
+  const t = useTranslations("hero")
   const [activeCard, setActiveCard] = useState(0)
   const [progress, setProgress] = useState(0)
   const mountedRef = useRef(true)
@@ -79,6 +81,12 @@ export default function HeroSection() {
     setProgress(0)
   }
 
+  const features = [
+    { title: t("feature1Title"), description: t("feature1Desc") },
+    { title: t("feature2Title"), description: t("feature2Desc") },
+    { title: t("feature3Title"), description: t("feature3Desc") },
+  ]
+
   return (
     <>
       {/* Hero */}
@@ -86,18 +94,17 @@ export default function HeroSection() {
         <div className="w-full max-w-[937px] lg:w-[937px] flex flex-col justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-6">
           <div className="self-stretch rounded-[3px] flex flex-col justify-center items-center gap-4 sm:gap-5 md:gap-6 lg:gap-8">
             <div className="w-full max-w-[748.71px] lg:w-[748.71px] text-center flex justify-center flex-col text-[#37322F] text-[24px] xs:text-[28px] sm:text-[36px] md:text-[52px] lg:text-[80px] font-normal leading-[1.1] sm:leading-[1.15] md:leading-[1.2] lg:leading-24 font-serif px-2 sm:px-4 md:px-0">
-              DI be streso —<br />
-              jūsų versle
+              {t("headlineLine1")}<br />
+              {t("headlineLine2")}
             </div>
             <div className="w-full max-w-[506.08px] lg:w-[506.08px] text-center flex justify-center flex-col text-[rgba(55,50,47,0.80)] sm:text-lg md:text-xl leading-[1.4] sm:leading-[1.45] md:leading-[1.5] lg:leading-7 font-sans px-2 sm:px-4 md:px-0 lg:text-lg font-medium text-sm">
-              Padedame verslui ir žmonėms pradėti naudoti<br className="hidden sm:block" />
-              dirbtinį intelektą — paprastai ir be techninio jargono.
+              {t("subtitle")}
             </div>
           </div>
         </div>
 
         <p className="w-full max-w-[480px] text-center text-sm md:text-base text-[#605A57] leading-relaxed mt-6 sm:mt-8 px-4 md:px-0">
-          Sužinokite per 5 minutes, kurie jūsų verslo procesai tinka automatizuoti — ir kiek laiko galėtumėte sutaupyti.
+          {t("hook")}
         </p>
 
         <div className="w-full flex flex-col justify-center items-center relative z-10 mt-4 sm:mt-5">
@@ -105,12 +112,12 @@ export default function HeroSection() {
             <a href="/assessment" className="h-11 md:h-12 px-6 md:px-8 relative bg-[#37322F] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset] overflow-hidden rounded-full flex justify-center items-center hover:bg-[#2A2520] transition-colors whitespace-nowrap">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.10)] mix-blend-multiply" />
               <span className="relative text-white text-sm md:text-[15px] font-medium font-sans">
-                Pradėti vertinimą →
+                {t("ctaPrimary")}
               </span>
             </a>
             <div className="h-11 md:h-12 px-6 md:px-8 rounded-full border border-[#E0DEDB] flex justify-center items-center cursor-pointer hover:border-[#605A57] hover:bg-[#F0EDE9] transition-colors whitespace-nowrap">
               <span className="text-[#37322F] text-sm md:text-[15px] font-medium font-sans">
-                Susisiekti
+                {t("ctaSecondary")}
               </span>
             </div>
           </div>
@@ -169,27 +176,16 @@ export default function HeroSection() {
         </div>
 
         <div className="flex-1 px-0 sm:px-2 md:px-0 flex flex-col md:flex-row justify-center items-stretch gap-0">
-          <FeatureCard
-            title="DI galimybių auditas"
-            description="Išanalizuojame jūsų procesus ir identifikuojame, kur DI sukurtų didžiausią vertę."
-            isActive={activeCard === 0}
-            progress={activeCard === 0 ? progress : 0}
-            onClick={() => handleCardClick(0)}
-          />
-          <FeatureCard
-            title="Diegimas ir integracija"
-            description="Įdiegiame tinkamus įrankius, pritaikytus jūsų komandai ir darbo eigai."
-            isActive={activeCard === 1}
-            progress={activeCard === 1 ? progress : 0}
-            onClick={() => handleCardClick(1)}
-          />
-          <FeatureCard
-            title="Mokymai ir palaikymas"
-            description="Praktiniai mokymai komandai — nuo pagrindų iki kasdienio naudojimo su DI."
-            isActive={activeCard === 2}
-            progress={activeCard === 2 ? progress : 0}
-            onClick={() => handleCardClick(2)}
-          />
+          {features.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              title={feature.title}
+              description={feature.description}
+              isActive={activeCard === index}
+              progress={activeCard === index ? progress : 0}
+              onClick={() => handleCardClick(index)}
+            />
+          ))}
         </div>
 
         <div className="w-4 sm:w-6 md:w-8 lg:w-12 self-stretch relative overflow-hidden">

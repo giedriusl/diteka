@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import type React from "react"
+import { useTranslations } from "next-intl"
 
 function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
@@ -12,27 +13,28 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   )
 }
 
-const cards = [
-  {
-    title: "DI galimybių auditas",
-    description: "Išanalizuojame jūsų procesus ir\nidentifikuojame, kur DI sukurtų didžiausią vertę.",
-    gradient: "from-blue-50 to-blue-100",
-  },
-  {
-    title: "Diegimas ir integracija",
-    description: "Įdiegiame tinkamus DI įrankius,\npritaikytus jūsų komandai ir darbo eigai.",
-    gradient: "from-purple-50 to-purple-100",
-  },
-  {
-    title: "Mokymai ir palaikymas",
-    description: "Praktiniai mokymai komandai —\nnuo pagrindų iki kasdienio naudojimo.",
-    gradient: "from-emerald-50 to-emerald-100",
-  },
-]
-
 export default function PlatformSection() {
+  const t = useTranslations("platform")
   const [activeCard, setActiveCard] = useState(0)
   const [animationKey, setAnimationKey] = useState(0)
+
+  const cards = [
+    {
+      title: t("card1Title"),
+      description: t("card1Desc"),
+      gradient: "from-blue-50 to-blue-100",
+    },
+    {
+      title: t("card2Title"),
+      description: t("card2Desc"),
+      gradient: "from-purple-50 to-purple-100",
+    },
+    {
+      title: t("card3Title"),
+      description: t("card3Desc"),
+      gradient: "from-emerald-50 to-emerald-100",
+    },
+  ]
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,7 +42,7 @@ export default function PlatformSection() {
       setAnimationKey((prev) => prev + 1)
     }, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [cards.length])
 
   const handleCardClick = (index: number) => {
     setActiveCard(index)
@@ -54,14 +56,13 @@ export default function PlatformSection() {
         <div className="w-full max-w-[586px] px-6 py-5 overflow-hidden rounded-lg flex flex-col justify-start items-center gap-4">
           <Badge
             icon={<div className="w-[10.50px] h-[10.50px] outline outline-[1.17px] outline-[#37322F] outline-offset-[-0.58px] rounded-full" />}
-            text="Platforma"
+            text={t("badge")}
           />
           <div className="self-stretch text-center text-[#49423D] text-3xl md:text-5xl font-semibold leading-tight md:leading-[60px] font-sans tracking-tight">
-            Supaprastinkite savo verslo veiklą
+            {t("heading")}
           </div>
           <div className="self-stretch text-center text-[#605A57] text-base font-normal leading-7 font-sans">
-            Valdykite DI diegimą, analizuokite rezultatus ir bendradarbiaukite su komanda<br />
-            — viskas vienoje galingoje platformoje.
+            {t("subheading")}
           </div>
         </div>
       </div>
@@ -93,7 +94,7 @@ export default function PlatformSection() {
                     <div className="self-stretch text-[#49423D] text-sm font-semibold leading-6 font-sans">
                       {card.title}
                     </div>
-                    <div className="self-stretch text-[#605A57] text-[13px] font-normal leading-[22px] font-sans whitespace-pre-line">
+                    <div className="self-stretch text-[#605A57] text-[13px] font-normal leading-[22px] font-sans">
                       {card.description}
                     </div>
                   </div>

@@ -1,4 +1,5 @@
 import type React from "react"
+import { getTranslations } from "next-intl/server"
 import SmartSimpleBrilliant from "@/components/ui/SmartSimpleBrilliant"
 import YourWorkInSync from "@/components/ui/YourWorkInSync"
 import EffortlessIntegration from "@/components/ui/EffortlessIntegration"
@@ -13,7 +14,9 @@ function Badge({ icon, text }: { icon: React.ReactNode; text: string }) {
   )
 }
 
-export default function BentoSection() {
+export default async function BentoSection() {
+  const t = await getTranslations("bento")
+
   return (
     <div className="w-full border-b border-[rgba(55,50,47,0.12)] flex flex-col justify-center items-center">
       {/* Header */}
@@ -28,14 +31,13 @@ export default function BentoSection() {
                 <rect x="7" y="7" width="4" height="4" stroke="#37322F" strokeWidth="1" fill="none" />
               </svg>
             }
-            text="Galimybės"
+            text={t("badge")}
           />
           <div className="w-full max-w-[598.06px] text-center text-[#49423D] text-xl sm:text-2xl md:text-3xl lg:text-5xl font-semibold leading-tight md:leading-[60px] font-sans tracking-tight">
-            Sukurta aiškumui ir susikaupusiam darbui
+            {t("heading")}
           </div>
           <div className="self-stretch text-center text-[#605A57] text-sm sm:text-base font-normal leading-6 sm:leading-7 font-sans">
-            Susikoncentruokite su įrankiais, kurie organizuoja, jungia<br />
-            ir paverčia informaciją pagrįstais sprendimais.
+            {t("subheading")}
           </div>
         </div>
       </div>
@@ -55,10 +57,10 @@ export default function BentoSection() {
           <div className="border-b border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
             <div className="flex flex-col gap-2">
               <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                Aiški vizija, tvarkingi duomenys
+                {t("card1Title")}
               </h3>
               <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                DI įrankiai atskleidžia modelius jūsų darbe, kad galėtumėte susikoncentruoti į tai, kas tikrai svarbu.
+                {t("card1Desc")}
               </p>
             </div>
             <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex items-center justify-center overflow-hidden">
@@ -75,10 +77,10 @@ export default function BentoSection() {
           <div className="border-b border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
             <div className="flex flex-col gap-2">
               <h3 className="text-[#37322F] font-semibold leading-tight font-sans text-lg sm:text-xl">
-                Jūsų komanda sinchronizuota
+                {t("card2Title")}
               </h3>
               <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                Kiekvienas atnaujinimas akimirksniu pasiekia visą komandą — bendradarbiavimas tampa paprastas ir greitas.
+                {t("card2Desc")}
               </p>
             </div>
             <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden text-right items-center justify-center">
@@ -95,10 +97,10 @@ export default function BentoSection() {
           <div className="border-r-0 md:border-r border-[rgba(55,50,47,0.12)] p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
             <div className="flex flex-col gap-2">
               <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                Sklandus integravimas
+                {t("card3Title")}
               </h3>
               <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                Visi jūsų mėgstami įrankiai sujungiami ir sustiprinami DI — viename nuosekliame darbo sraute.
+                {t("card3Desc")}
               </p>
             </div>
             <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden justify-center items-center relative">
@@ -113,10 +115,10 @@ export default function BentoSection() {
           <div className="p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-start items-start gap-4 sm:gap-6">
             <div className="flex flex-col gap-2">
               <h3 className="text-[#37322F] text-lg sm:text-xl font-semibold leading-tight font-sans">
-                Rezultatai, kurie kalba
+                {t("card4Title")}
               </h3>
               <p className="text-[#605A57] text-sm md:text-base font-normal leading-relaxed font-sans">
-                Sekite DI diegimo pažangą tiksliai ir paversite duomenis pagrįstais sprendimais, kuriais galima pasitikėti.
+                {t("card4Desc")}
               </p>
             </div>
             <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] rounded-lg flex overflow-hidden items-center justify-center relative">

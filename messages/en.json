@@ -1,40 +1,88 @@
 {
   "nav": {
-    "howItWorks": "How it works",
+    "brand": "Diteka",
     "services": "Services",
-    "contact": "Contact"
+    "principles": "Principles",
+    "contacts": "Contact",
+    "contact": "Contact us"
   },
   "hero": {
-    "headline": "AI in your life — simply and without stress",
-    "subheadline": "We help businesses and individuals start using artificial intelligence — step by step, without the technical jargon."
+    "headlineLine1": "AI without stress —",
+    "headlineLine2": "in your business",
+    "subtitle": "We help businesses and people start using artificial intelligence — simply and without technical jargon.",
+    "hook": "Find out in 5 minutes which of your business processes are ready to automate — and how much time you could save.",
+    "ctaPrimary": "Start assessment →",
+    "ctaSecondary": "Contact us",
+    "feature1Title": "AI opportunity audit",
+    "feature1Desc": "We analyse your processes and identify where AI would create the most value.",
+    "feature2Title": "Implementation & integration",
+    "feature2Desc": "We deploy the right tools, tailored to your team and workflow.",
+    "feature3Title": "Training & support",
+    "feature3Desc": "Hands-on training for your team — from the basics to daily AI use."
   },
-  "howItWorks": {
-    "title": "How it works",
-    "step1Title": "We meet",
-    "step1Desc": "You tell us where you want to improve your work or life.",
-    "step2Title": "We plan",
-    "step2Desc": "We create a simple plan tailored specifically to you.",
-    "step3Title": "We implement",
-    "step3Desc": "We guide every step — from start to result."
+  "bento": {
+    "badge": "Features",
+    "heading": "Built for clarity and focused work",
+    "subheading": "Focus with tools that organise, connect and turn information into well-founded decisions.",
+    "card1Title": "Clear vision, tidy data",
+    "card1Desc": "AI tools reveal patterns in your work so you can focus on what truly matters.",
+    "card2Title": "Your team in sync",
+    "card2Desc": "Every update reaches the whole team instantly — collaboration becomes simple and fast.",
+    "card3Title": "Effortless integration",
+    "card3Desc": "All your favourite tools are connected and enhanced by AI — in one cohesive workflow.",
+    "card4Title": "Results that speak",
+    "card4Desc": "Track AI deployment progress precisely and turn data into well-founded decisions you can trust."
   },
-  "services": {
-    "title": "Services",
-    "consulting": "AI consulting",
-    "consultingDesc": "We analyse your needs and find the right AI solutions.",
-    "training": "Training",
-    "trainingDesc": "Hands-on training for your team — from basics to daily use.",
-    "implementation": "Implementation",
-    "implementationDesc": "We help integrate AI tools into your workflows."
+  "platform": {
+    "badge": "Platform",
+    "heading": "Simplify your business operations",
+    "subheading": "Manage AI deployments, analyse results, and collaborate with your team — all in one powerful platform.",
+    "card1Title": "AI opportunity audit",
+    "card1Desc": "We analyse your processes and identify where AI would create the most value.",
+    "card2Title": "Implementation & integration",
+    "card2Desc": "We deploy the right AI tools, tailored to your team and workflow.",
+    "card3Title": "Training & support",
+    "card3Desc": "Hands-on training for your team — from the basics to daily use."
   },
-  "testimonials": {
-    "title": "What clients say"
+  "faq": {
+    "heading": "Frequently asked questions",
+    "subheading": "Find answers to the most common questions about AI deployment and Diteka services.",
+    "q1": "What is Diteka and who is it for?",
+    "a1": "Diteka helps businesses and individuals start using artificial intelligence simply and without stress. We serve small and medium businesses, teams, and individuals who want to work more effectively with AI.",
+    "q2": "Do I need technical knowledge?",
+    "a2": "No. Our methodology is designed for people without programming experience. We work simply, without technical jargon — we explain everything in plain language.",
+    "q3": "How does collaboration work?",
+    "a3": "We start with an audit — we learn your needs and processes. Then we prepare a plan and guide you step by step to the result. The whole process runs at your own pace.",
+    "q4": "How much do services cost?",
+    "a4": "The price depends on the project scope and selected services. Contact us and we'll discuss the best option for your needs and budget.",
+    "q5": "Can I get help if I'm already using AI tools?",
+    "a5": "Yes! We provide ongoing support and training. Whether you're just starting out or already using AI — we can help you go further and be more effective.",
+    "q6": "How do I start?",
+    "a6": "Easily! Write to us or fill in the contact form. Within 24 hours we'll get in touch and discuss your needs."
   },
   "cta": {
-    "title": "Start today",
-    "subtitle": "Get in touch and we'll discuss how AI can help your business.",
-    "button": "Get in touch"
+    "heading": "Start your AI journey today",
+    "subheading": "Get in touch and we'll discuss how AI can help your business — simply, without stress, and step by step.",
+    "ctaPrimary": "Contact us",
+    "ctaSecondary": "Evaluate processes →"
   },
   "footer": {
-    "rights": "All rights reserved."
+    "tagline": "AI without stress",
+    "servicesLabel": "Services",
+    "service1": "AI audit",
+    "service2": "Implementation",
+    "service3": "Training",
+    "service4": "Consulting",
+    "service5": "Support",
+    "companyLabel": "Company",
+    "company1": "About us",
+    "company2": "Team",
+    "company3": "Contact",
+    "company4": "Blog",
+    "resourcesLabel": "Resources",
+    "resource1": "Terms of use",
+    "resource2": "Privacy",
+    "resource3": "Documentation",
+    "resource4": "Support"
   }
 }

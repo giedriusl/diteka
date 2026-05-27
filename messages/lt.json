@@ -1,40 +1,88 @@
 {
   "nav": {
-    "howItWorks": "Kaip tai veikia",
+    "brand": "Diteka",
     "services": "Paslaugos",
+    "principles": "Principai",
+    "contacts": "Kontaktai",
     "contact": "Susisiekti"
   },
   "hero": {
-    "headline": "DI į jūsų gyvenimą — paprastai ir be streso",
-    "subheadline": "Padedame verslui ir žmonėms pradėti naudoti dirbtinį intelektą — žingsnis po žingsnio, be techninio jargono."
+    "headlineLine1": "DI be streso —",
+    "headlineLine2": "jūsų versle",
+    "subtitle": "Padedame verslui ir žmonėms pradėti naudoti dirbtinį intelektą — paprastai ir be techninio jargono.",
+    "hook": "Sužinokite per 5 minutes, kurie jūsų verslo procesai tinka automatizuoti — ir kiek laiko galėtumėte sutaupyti.",
+    "ctaPrimary": "Pradėti vertinimą →",
+    "ctaSecondary": "Susisiekti",
+    "feature1Title": "DI galimybių auditas",
+    "feature1Desc": "Išanalizuojame jūsų procesus ir identifikuojame, kur DI sukurtų didžiausią vertę.",
+    "feature2Title": "Diegimas ir integracija",
+    "feature2Desc": "Įdiegiame tinkamus įrankius, pritaikytus jūsų komandai ir darbo eigai.",
+    "feature3Title": "Mokymai ir palaikymas",
+    "feature3Desc": "Praktiniai mokymai komandai — nuo pagrindų iki kasdienio naudojimo su DI."
   },
-  "howItWorks": {
-    "title": "Kaip tai veikia",
-    "step1Title": "Susipažįstame",
-    "step1Desc": "Pasakote, kur norite pagerinti darbą ar gyvenimą.",
-    "step2Title": "Planuojame",
-    "step2Desc": "Paruošiame paprastą planą, pritaikytą būtent jums.",
-    "step3Title": "Diegiame",
-    "step3Desc": "Palydime kiekvieną žingsnį — nuo pradžios iki rezultato."
+  "bento": {
+    "badge": "Galimybės",
+    "heading": "Sukurta aiškumui ir susikaupusiam darbui",
+    "subheading": "Susikoncentruokite su įrankiais, kurie organizuoja, jungia ir paverčia informaciją pagrįstais sprendimais.",
+    "card1Title": "Aiški vizija, tvarkingi duomenys",
+    "card1Desc": "DI įrankiai atskleidžia modelius jūsų darbe, kad galėtumėte susikoncentruoti į tai, kas tikrai svarbu.",
+    "card2Title": "Jūsų komanda sinchronizuota",
+    "card2Desc": "Kiekvienas atnaujinimas akimirksniu pasiekia visą komandą — bendradarbiavimas tampa paprastas ir greitas.",
+    "card3Title": "Sklandus integravimas",
+    "card3Desc": "Visi jūsų mėgstami įrankiai sujungiami ir sustiprinami DI — viename nuosekliame darbo sraute.",
+    "card4Title": "Rezultatai, kurie kalba",
+    "card4Desc": "Sekite DI diegimo pažangą tiksliai ir paversite duomenis pagrįstais sprendimais, kuriais galima pasitikėti."
   },
-  "services": {
-    "title": "Paslaugos",
-    "consulting": "DI konsultacijos",
-    "consultingDesc": "Analizuojame jūsų poreikius ir randame tinkamus DI sprendimus.",
-    "training": "Mokymai",
-    "trainingDesc": "Praktiniai mokymai komandai — nuo pagrindų iki kasdienio naudojimo.",
-    "implementation": "Diegimas",
-    "implementationDesc": "Padedame integruoti DI įrankius į jūsų darbo procesus."
+  "platform": {
+    "badge": "Platforma",
+    "heading": "Supaprastinkite savo verslo veiklą",
+    "subheading": "Valdykite DI diegimą, analizuokite rezultatus ir bendradarbiaukite su komanda — viskas vienoje galingoje platformoje.",
+    "card1Title": "DI galimybių auditas",
+    "card1Desc": "Išanalizuojame jūsų procesus ir identifikuojame, kur DI sukurtų didžiausią vertę.",
+    "card2Title": "Diegimas ir integracija",
+    "card2Desc": "Įdiegiame tinkamus DI įrankius, pritaikytus jūsų komandai ir darbo eigai.",
+    "card3Title": "Mokymai ir palaikymas",
+    "card3Desc": "Praktiniai mokymai komandai — nuo pagrindų iki kasdienio naudojimo."
   },
-  "testimonials": {
-    "title": "Ką sako klientai"
+  "faq": {
+    "heading": "Dažniausiai užduodami klausimai",
+    "subheading": "Raskite atsakymus į dažniausius klausimus apie DI diegimą ir Diteka paslaugas.",
+    "q1": "Kas yra Diteka ir kam ji skirta?",
+    "a1": "Diteka padeda verslui ir žmonėms pradėti naudoti dirbtinį intelektą paprastai ir be streso. Tinkame smulkiam ir vidutiniam verslui, komandoms ir individualiems asmenims, norintiems efektyviau dirbti su DI.",
+    "q2": "Ar man reikia techninių žinių?",
+    "a2": "Ne. Mūsų metodika skirta žmonėms be programavimo patirties. Dirbame paprastai, be techninio jargono — paaiškinsime viską suprantama kalba.",
+    "q3": "Kaip vyksta bendradarbiavimas?",
+    "a3": "Pradedame nuo audito — išsiaiškiname jūsų poreikius ir procesus. Tada paruošiame planą ir žingsnis po žingsnio palydime iki rezultato. Visas procesas vyksta jūsų patogiu tempu.",
+    "q4": "Kiek kainuoja paslaugos?",
+    "a4": "Kaina priklauso nuo projekto apimties ir pasirinktų paslaugų. Susisiekite su mumis ir aptarsime tinkamiausią variantą jūsų poreikiams bei biudžetui.",
+    "q5": "Ar galiu gauti pagalbą jau naudojant DI įrankius?",
+    "a5": "Taip! Teikiame tęstinę pagalbą ir mokymus. Nesvarbu, ar tik pradedate, ar jau naudojate DI — galime padėti žengti toliau ir efektyviau.",
+    "q6": "Kaip pradėti?",
+    "a6": "Paprastai! Parašykite mums arba užpildykite kontaktų formą. Per 24 valandas susisieksime ir aptarsime jūsų poreikius."
   },
   "cta": {
-    "title": "Pradėkite šiandien",
-    "subtitle": "Susisiekite ir aptarsime, kaip DI gali padėti jūsų verslui.",
-    "button": "Susisiekti"
+    "heading": "Pradėkite savo DI kelionę šiandien",
+    "subheading": "Susisiekite su mumis ir aptarsime, kaip DI gali padėti jūsų verslui, — paprastai, be streso ir žingsnis po žingsnio.",
+    "ctaPrimary": "Susisiekti",
+    "ctaSecondary": "Įvertinti procesus →"
   },
   "footer": {
-    "rights": "Visos teisės saugomos."
+    "tagline": "DI be streso",
+    "servicesLabel": "Paslaugos",
+    "service1": "DI auditas",
+    "service2": "Diegimas",
+    "service3": "Mokymai",
+    "service4": "Konsultacijos",
+    "service5": "Palaikymas",
+    "companyLabel": "Įmonė",
+    "company1": "Apie mus",
+    "company2": "Komanda",
+    "company3": "Kontaktai",
+    "company4": "Blogas",
+    "resourcesLabel": "Ištekliai",
+    "resource1": "Naudojimo sąlygos",
+    "resource2": "Privatumas",
+    "resource3": "Dokumentacija",
+    "resource4": "Palaikymas"
   }
 }

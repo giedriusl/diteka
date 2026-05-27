@@ -1,4 +1,12 @@
-export default function SiteFooter() {
+import { getTranslations } from 'next-intl/server'
+
+export default async function SiteFooter() {
+  const t = await getTranslations('footer')
+
+  const services = [t('service1'), t('service2'), t('service3'), t('service4'), t('service5')]
+  const company = [t('company1'), t('company2'), t('company3'), t('company4')]
+  const resources = [t('resource1'), t('resource2'), t('resource3'), t('resource4')]
+
   return (
     <div className="w-full pt-10 flex flex-col justify-start items-start">
       {/* Main Footer Content */}
@@ -9,7 +17,7 @@ export default function SiteFooter() {
             <div className="text-center text-[#49423D] text-xl font-semibold leading-4 font-sans">Diteka</div>
           </div>
           <div className="text-[rgba(73,66,61,0.90)] text-sm font-medium leading-[18px] font-sans">
-            DI be streso
+            {t('tagline')}
           </div>
 
           {/* Social Icons */}
@@ -39,13 +47,12 @@ export default function SiteFooter() {
 
         {/* Navigation Links */}
         <div className="self-stretch p-4 md:p-8 flex flex-col sm:flex-row flex-wrap justify-start sm:justify-between items-start gap-6 md:gap-8">
-          {/* Paslaugos */}
           <div className="flex flex-col justify-start items-start gap-3 flex-1 min-w-[120px]">
             <div className="self-stretch text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">
-              Paslaugos
+              {t('servicesLabel')}
             </div>
             <div className="flex flex-col justify-end items-start gap-2">
-              {["DI auditas", "Diegimas", "Mokymai", "Konsultacijos", "Palaikymas"].map((item) => (
+              {services.map((item) => (
                 <div key={item} className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                   {item}
                 </div>
@@ -53,11 +60,10 @@ export default function SiteFooter() {
             </div>
           </div>
 
-          {/* Įmonė */}
           <div className="flex flex-col justify-start items-start gap-3 flex-1 min-w-[120px]">
-            <div className="text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">Įmonė</div>
+            <div className="text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">{t('companyLabel')}</div>
             <div className="flex flex-col justify-center items-start gap-2">
-              {["Apie mus", "Komanda", "Kontaktai", "Blogas"].map((item) => (
+              {company.map((item) => (
                 <div key={item} className="text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                   {item}
                 </div>
@@ -65,11 +71,10 @@ export default function SiteFooter() {
             </div>
           </div>
 
-          {/* Ištekliai */}
           <div className="flex flex-col justify-start items-start gap-3 flex-1 min-w-[120px]">
-            <div className="text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">Ištekliai</div>
+            <div className="text-[rgba(73,66,61,0.50)] text-sm font-medium leading-5 font-sans">{t('resourcesLabel')}</div>
             <div className="flex flex-col justify-center items-center gap-2">
-              {["Naudojimo sąlygos", "Privatumas", "Dokumentacija", "Palaikymas"].map((item) => (
+              {resources.map((item) => (
                 <div key={item} className="self-stretch text-[#49423D] text-sm font-normal leading-5 font-sans cursor-pointer hover:text-[#37322F] transition-colors">
                   {item}
                 </div>
