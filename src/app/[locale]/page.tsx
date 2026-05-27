@@ -21,7 +21,7 @@ export default function HomePage() {
           <div className="self-stretch pt-[9px] overflow-hidden border-b border-[rgba(55,50,47,0.06)] flex flex-col justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-[66px] relative z-10">
             <SiteHeader />
             <HeroSection />
-            <SocialProofSection />
+            {/* <SocialProofSection /> — hidden until real clients (see TODO.md) */}
             <BentoSection />
             <PlatformSection />
             <TestimonialsSection />

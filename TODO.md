@@ -1,5 +1,11 @@
 # TODO
 
+## Social proof / trusted clients (page.tsx)
+
+- [ ] Re-enable `<SocialProofSection />` once real client logos are available
+  - File: `src/app/[locale]/page.tsx` line 24 — uncomment the component
+  - Component lives at `src/components/sections/SocialProofSection.tsx`
+
 ## Hero dashboard (HeroSection.tsx)
 
 - [ ] Replace placeholder dashboard images with real product screenshots
