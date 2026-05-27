@@ -1,10 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { useAssessmentSession } from '@/hooks/useAssessmentSession'
+import type { FormState, AssessmentAction } from '@/lib/assessment/types'
 import { getT } from '@/lib/assessment/translations'
 import { ProgressBar } from './ProgressBar'
-import { LanguageToggle } from './LanguageToggle'
 import { Step0Language } from './steps/Step0Language'
 import { Step1Context } from './steps/Step1Context'
 import { Step2DirectionalScore } from './steps/Step2DirectionalScore'
@@ -15,8 +14,12 @@ import { Step6EmailGate } from './steps/Step6EmailGate'
 import { Step7ThankYou } from './steps/Step7ThankYou'
 import styles from './questionnaire.module.css'
 
-export function AssessmentQuestionnaire() {
-  const { state, dispatch } = useAssessmentSession()
+interface AssessmentQuestionnaireProps {
+  state: FormState
+  dispatch: React.Dispatch<AssessmentAction>
+}
+
+export function AssessmentQuestionnaire({ state, dispatch }: AssessmentQuestionnaireProps) {
   const t = getT(state.language)
   const [confirmReset, setConfirmReset] = useState(false)
 
@@ -47,16 +50,7 @@ export function AssessmentQuestionnaire() {
   return (
     <div className="relative w-full">
       {state.step > 0 && (
-        <div className="flex items-start justify-between">
-          <LanguageToggle
-            language={state.language}
-            onToggle={() =>
-              dispatch({
-                type: 'SET_LANGUAGE',
-                language: state.language === 'en' ? 'lt' : 'en',
-              })
-            }
-          />
+        <div className="flex items-start justify-end">
           {showReset && (
             <div className="px-4 pt-4 text-right">
               {confirmReset ? (
