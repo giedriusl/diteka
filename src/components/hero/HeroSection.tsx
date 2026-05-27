@@ -96,7 +96,11 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="w-full flex flex-col justify-center items-center relative z-10 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
+        <p className="w-full max-w-[480px] text-center text-sm md:text-base text-[#605A57] leading-relaxed mt-6 sm:mt-8 px-4 md:px-0">
+          Sužinokite per 5 minutes, kurie jūsų verslo procesai tinka automatizuoti — ir kiek laiko galėtumėte sutaupyti.
+        </p>
+
+        <div className="w-full flex flex-col justify-center items-center relative z-10 mt-4 sm:mt-5">
           <div className="flex justify-center items-center gap-3">
             <a href="/assessment" className="h-11 md:h-12 px-6 md:px-8 relative bg-[#37322F] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset] overflow-hidden rounded-full flex justify-center items-center hover:bg-[#2A2520] transition-colors whitespace-nowrap">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.10)] mix-blend-multiply" />
