@@ -1,7 +1,5 @@
 import { NextRequest } from 'next/server'
-import { createElement, type ReactElement } from 'react'
-import { renderToBuffer, type DocumentProps } from '@react-pdf/renderer'
-import { ReportDocument } from '@/lib/assessment/report-pdf'
+import { generatePdf } from '@/lib/assessment/generatePdf'
 import type { WebhookPayload } from '@/lib/assessment/types'
 
 export const dynamic = 'force-dynamic'
@@ -19,8 +17,7 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: 'Missing required fields: email, company_score, processes' }, { status: 400 })
   }
 
-  const element = createElement(ReportDocument, { payload }) as ReactElement<DocumentProps>
-  const buffer = await renderToBuffer(element)
+  const buffer = await generatePdf(payload)
 
   const username = payload.email
     .split('@')[0]

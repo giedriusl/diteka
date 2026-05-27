@@ -1,6 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import type { WebhookPayload } from '@/lib/assessment/types'
 
+// Mock PDF generation so tests don't need @react-pdf/renderer
+vi.mock('@/lib/assessment/generatePdf', () => ({
+  generatePdf: vi.fn().mockResolvedValue(Buffer.from('fake-pdf')),
+}))
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function makePayload(overrides: Partial<WebhookPayload> = {}): WebhookPayload {
@@ -31,7 +36,6 @@ function makePayload(overrides: Partial<WebhookPayload> = {}): WebhookPayload {
 }
 
 async function callRoute(payload: unknown, env: Record<string, string> = {}) {
-  // Dynamically import after env is set so the module picks up the env var
   vi.resetModules()
   for (const [k, v] of Object.entries(env)) {
     process.env[k] = v
@@ -49,42 +53,52 @@ async function callRoute(payload: unknown, env: Record<string, string> = {}) {
   return POST(req)
 }
 
+const BREVO_KEY = 'test-brevo-key'
+
+function mockBrevoSuccess() {
+  vi.mocked(fetch)
+    .mockResolvedValueOnce(new Response('{}', { status: 201 })) // sendEmail
+    .mockResolvedValueOnce(new Response('{}', { status: 201 })) // upsertContact
+}
+
 // ─── Tests ────────────────────────────────────────────────────────────────────
 
 describe('POST /api/assessment/submit', () => {
-  const WEBHOOK = 'https://n8n.example.com/webhook/test'
-
   beforeEach(() => {
-    delete process.env.N8N_WEBHOOK_URL
+    delete process.env.BREVO_API_KEY
+    delete process.env.HOT_LEAD_ALERT_EMAIL
     vi.stubGlobal('fetch', vi.fn())
   })
 
   afterEach(() => {
     vi.unstubAllGlobals()
     vi.resetModules()
-    delete process.env.N8N_WEBHOOK_URL
+    delete process.env.BREVO_API_KEY
+    delete process.env.HOT_LEAD_ALERT_EMAIL
   })
 
+  // ─── Validation ────────────────────────────────────────────────────────────
+
   it('returns 400 for missing email', async () => {
-    const res = await callRoute(makePayload({ email: '' }), { N8N_WEBHOOK_URL: WEBHOOK })
+    const res = await callRoute(makePayload({ email: '' }), { BREVO_API_KEY: BREVO_KEY })
     expect(res.status).toBe(400)
     const body = await res.json()
     expect(body.error).toMatch(/email/i)
   })
 
   it('returns 400 for malformed email', async () => {
-    const res = await callRoute(makePayload({ email: 'not-an-email' }), { N8N_WEBHOOK_URL: WEBHOOK })
+    const res = await callRoute(makePayload({ email: 'not-an-email' }), { BREVO_API_KEY: BREVO_KEY })
     expect(res.status).toBe(400)
   })
 
   it('returns 400 for empty processes array', async () => {
-    const res = await callRoute(makePayload({ processes: [] }), { N8N_WEBHOOK_URL: WEBHOOK })
+    const res = await callRoute(makePayload({ processes: [] }), { BREVO_API_KEY: BREVO_KEY })
     expect(res.status).toBe(400)
   })
 
   it('returns 400 for invalid JSON body', async () => {
     vi.resetModules()
-    process.env.N8N_WEBHOOK_URL = WEBHOOK
+    process.env.BREVO_API_KEY = BREVO_KEY
     const { POST } = await import('./route')
     const { NextRequest } = await import('next/server')
     const req = new NextRequest('http://localhost/api/assessment/submit', {
@@ -96,46 +110,87 @@ describe('POST /api/assessment/submit', () => {
     expect(res.status).toBe(400)
   })
 
-  it('returns 200 ok when N8N_WEBHOOK_URL is not set (graceful degradation)', async () => {
+  // ─── Graceful degradation ──────────────────────────────────────────────────
+
+  it('returns 200 ok when BREVO_API_KEY is not set', async () => {
     const res = await callRoute(makePayload())
     expect(res.status).toBe(200)
     const body = await res.json()
     expect(body.ok).toBe(true)
+    expect(fetch).not.toHaveBeenCalled()
   })
 
-  it('forwards payload to n8n and returns { ok: true }', async () => {
-    vi.mocked(fetch).mockResolvedValueOnce(new Response('{}', { status: 200 }))
-    const res = await callRoute(makePayload(), { N8N_WEBHOOK_URL: WEBHOOK })
+  // ─── Brevo integration ─────────────────────────────────────────────────────
+
+  it('sends email and upserts contact via Brevo', async () => {
+    mockBrevoSuccess()
+    const res = await callRoute(makePayload(), { BREVO_API_KEY: BREVO_KEY })
     expect(res.status).toBe(200)
     const body = await res.json()
     expect(body.ok).toBe(true)
-    expect(fetch).toHaveBeenCalledWith(WEBHOOK, expect.objectContaining({ method: 'POST' }))
+
+    const calls = vi.mocked(fetch).mock.calls
+    expect(calls.length).toBe(2)
+    expect(calls[0][0]).toBe('https://api.brevo.com/v3/smtp/email')
+    expect(calls[1][0]).toBe('https://api.brevo.com/v3/contacts')
   })
 
-  it('returns 502 when upstream returns non-OK status', async () => {
-    vi.mocked(fetch).mockResolvedValueOnce(new Response('', { status: 503 }))
-    const res = await callRoute(makePayload(), { N8N_WEBHOOK_URL: WEBHOOK })
-    expect(res.status).toBe(502)
+  it('sends correct Content-Type header to Brevo', async () => {
+    mockBrevoSuccess()
+    await callRoute(makePayload(), { BREVO_API_KEY: BREVO_KEY })
+    const [, init] = vi.mocked(fetch).mock.calls[0]
+    expect((init as RequestInit).headers).toMatchObject({ 'Content-Type': 'application/json' })
   })
 
-  it('returns 502 when upstream fetch throws', async () => {
+  it('HOT lead (score >= 70) triggers alert email', async () => {
+    vi.mocked(fetch)
+      .mockResolvedValueOnce(new Response('{}', { status: 201 })) // report email
+      .mockResolvedValueOnce(new Response('{}', { status: 201 })) // upsertContact
+      .mockResolvedValueOnce(new Response('{}', { status: 201 })) // alert email
+
+    const res = await callRoute(
+      makePayload({ company_score: 75 }),
+      { BREVO_API_KEY: BREVO_KEY, HOT_LEAD_ALERT_EMAIL: 'sales@diteka.lt' },
+    )
+    expect(res.status).toBe(200)
+    expect(vi.mocked(fetch).mock.calls.length).toBe(3)
+  })
+
+  it('WARM lead does not trigger alert when HOT_LEAD_ALERT_EMAIL unset', async () => {
+    mockBrevoSuccess()
+    const res = await callRoute(
+      makePayload({ company_score: 60 }),
+      { BREVO_API_KEY: BREVO_KEY },
+    )
+    expect(res.status).toBe(200)
+    expect(vi.mocked(fetch).mock.calls.length).toBe(2)
+  })
+
+  it('non-HOT/WARM lead never triggers alert even with alert email set', async () => {
+    mockBrevoSuccess()
+    const res = await callRoute(
+      makePayload({ company_score: 25 }),
+      { BREVO_API_KEY: BREVO_KEY, HOT_LEAD_ALERT_EMAIL: 'sales@diteka.lt' },
+    )
+    expect(res.status).toBe(200)
+    expect(vi.mocked(fetch).mock.calls.length).toBe(2)
+  })
+
+  // ─── Error resilience ──────────────────────────────────────────────────────
+
+  it('returns 200 ok when Brevo email call throws', async () => {
     vi.mocked(fetch).mockRejectedValueOnce(new Error('ECONNREFUSED'))
-    const res = await callRoute(makePayload(), { N8N_WEBHOOK_URL: WEBHOOK })
-    expect(res.status).toBe(502)
+    const res = await callRoute(makePayload(), { BREVO_API_KEY: BREVO_KEY })
+    expect(res.status).toBe(200)
+    const body = await res.json()
+    expect(body.ok).toBe(true)
   })
 
-  it('does not include internal error details in response body', async () => {
+  it('does not leak internal error details in response body', async () => {
     vi.mocked(fetch).mockRejectedValueOnce(new Error('secret internal path /home/app'))
-    const res = await callRoute(makePayload(), { N8N_WEBHOOK_URL: WEBHOOK })
+    const res = await callRoute(makePayload(), { BREVO_API_KEY: BREVO_KEY })
     const body = await res.json()
     expect(JSON.stringify(body)).not.toContain('secret')
     expect(JSON.stringify(body)).not.toContain('/home')
-  })
-
-  it('forwards the correct Content-Type header to n8n', async () => {
-    vi.mocked(fetch).mockResolvedValueOnce(new Response('{}', { status: 200 }))
-    await callRoute(makePayload(), { N8N_WEBHOOK_URL: WEBHOOK })
-    const [, init] = vi.mocked(fetch).mock.calls[0]
-    expect((init as RequestInit).headers).toMatchObject({ 'Content-Type': 'application/json' })
   })
 })
