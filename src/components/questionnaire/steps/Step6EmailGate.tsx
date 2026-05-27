@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { Dispatch } from 'react'
 import type { FormState, AssessmentAction } from '@/lib/assessment/types'
 import { getT, tmpl } from '@/lib/assessment/translations'
@@ -17,6 +17,13 @@ interface Step6Props {
 export function Step6EmailGate({ state, dispatch }: Step6Props) {
   const t = getT(state.language)
   const [touched, setTouched] = useState(false)
+
+  useEffect(() => {
+    if (state.stage1_email && !state.email) {
+      dispatch({ type: 'SET_EMAIL', email: state.stage1_email })
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const scoreResult = computeFullScore(state)
   const isValidEmail = EMAIL_RE.test(state.email)
@@ -78,6 +85,11 @@ export function Step6EmailGate({ state, dispatch }: Step6Props) {
           {t.step6.emailLabel}
           <span aria-hidden="true" className="ml-1 text-[#ea580c]">*</span>
         </label>
+        {state.stage1_email && (
+          <p className="text-xs text-[#605A57]">
+            {tmpl(t.step6.prefillNote, { email: state.stage1_email })}
+          </p>
+        )}
         <input
           id="assessment-email"
           type="email"
