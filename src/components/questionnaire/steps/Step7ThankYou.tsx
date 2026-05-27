@@ -12,7 +12,7 @@ interface Step7Props {
   dispatch: Dispatch<AssessmentAction>
 }
 
-export function Step7ThankYou({ state, dispatch }: Step7Props) {
+export function Step7ThankYou({ state }: Step7Props) {
   const t = getT(state.language)
   const [downloading, setDownloading] = useState(false)
 
@@ -107,38 +107,34 @@ export function Step7ThankYou({ state, dispatch }: Step7Props) {
         </div>
       )}
 
-      <div className="flex w-full max-w-sm flex-col items-center gap-2">
-        <a
-          href="#"
-          className="inline-flex h-11 w-full items-center justify-center rounded-lg bg-[#37322F] px-6 text-sm font-medium text-[#FBFAF9] transition-all hover:bg-[#605A57] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#37322F]/30"
-        >
-          {t.step7.calendarCta}
-        </a>
-        <p className="text-xs text-[#605A57]">{t.step7.calendarSubtext}</p>
-
-        <button
-          type="button"
-          onClick={downloadPdf}
-          disabled={downloading}
-          className="mt-2 inline-flex h-10 w-full items-center justify-center gap-2 rounded-lg border border-[#E0DEDB] bg-white px-6 text-sm font-medium text-[#37322F] transition-all hover:border-[#605A57] hover:bg-[#F7F5F3] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#37322F]/30"
-        >
-          {downloading ? (
-            <>
-              <span className="size-4 animate-spin rounded-full border-2 border-[#37322F]/20 border-t-[#37322F]" aria-hidden="true" />
-              Generating…
-            </>
-          ) : (
-            'Download PDF Report'
-          )}
-        </button>
+      <div className="w-full max-w-sm rounded-xl border border-[#E0DEDB] bg-[#F7F5F3] p-5 text-center">
+        <p className="font-semibold text-[#37322F]">{t.step7.contactCta}</p>
+        <p className="mt-1 text-sm text-[#605A57]">{t.step7.contactSubtext}</p>
+        <p className="mt-3 text-xs text-[#605A57]">
+          {t.step7.contactFallback}{' '}
+          <a
+            href="mailto:info@diteka.lt"
+            className="font-medium underline underline-offset-2 hover:text-[#37322F]"
+          >
+            info@diteka.lt
+          </a>
+        </p>
       </div>
 
       <button
         type="button"
-        onClick={() => dispatch({ type: 'RESET' })}
-        className="text-xs text-[#605A57] underline underline-offset-2 hover:text-[#37322F]"
+        onClick={downloadPdf}
+        disabled={downloading}
+        className="inline-flex h-10 w-full max-w-sm items-center justify-center gap-2 rounded-lg border border-[#E0DEDB] bg-white px-6 text-sm font-medium text-[#37322F] transition-all hover:border-[#605A57] hover:bg-[#F7F5F3] disabled:cursor-not-allowed disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#37322F]/30"
       >
-        {state.language === 'lt' ? 'Pradėti iš naujo' : 'Start over'}
+        {downloading ? (
+          <>
+            <span className="size-4 animate-spin rounded-full border-2 border-[#37322F]/20 border-t-[#37322F]" aria-hidden="true" />
+            Generating…
+          </>
+        ) : (
+          'Download PDF Report'
+        )}
       </button>
     </div>
   )

@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useAssessmentSession } from '@/hooks/useAssessmentSession'
 import { getT, tmpl } from '@/lib/assessment/translations'
 import { ProgressBar } from './ProgressBar'
@@ -19,6 +20,7 @@ const TOTAL_STEPS = 8
 export function AssessmentQuestionnaire() {
   const { state, dispatch } = useAssessmentSession()
   const t = getT(state.language)
+  const [confirmReset, setConfirmReset] = useState(false)
 
   const stepProps = { state, dispatch }
 
@@ -36,18 +38,61 @@ export function AssessmentQuestionnaire() {
     }
   }
 
+  function handleReset() {
+    dispatch({ type: 'RESET' })
+    setConfirmReset(false)
+  }
+
+  const showReset = state.step >= 1
+  const needsConfirm = state.step < 7
+
   return (
     <div className="relative w-full">
       {state.step > 0 && (
-        <LanguageToggle
-          language={state.language}
-          onToggle={() =>
-            dispatch({
-              type: 'SET_LANGUAGE',
-              language: state.language === 'en' ? 'lt' : 'en',
-            })
-          }
-        />
+        <div className="flex items-start justify-between">
+          <LanguageToggle
+            language={state.language}
+            onToggle={() =>
+              dispatch({
+                type: 'SET_LANGUAGE',
+                language: state.language === 'en' ? 'lt' : 'en',
+              })
+            }
+          />
+          {showReset && (
+            <div className="px-4 pt-4 text-right">
+              {confirmReset ? (
+                <div className="flex flex-col items-end gap-1.5">
+                  <span className="text-xs text-[#605A57]">{t.reset.confirm}</span>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setConfirmReset(false)}
+                      className="text-xs text-[#605A57] underline underline-offset-2 hover:text-[#37322F]"
+                    >
+                      {t.reset.cancel}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleReset}
+                      className="text-xs font-medium text-[#ea580c] underline underline-offset-2 hover:text-[#c2410c]"
+                    >
+                      {t.reset.yes}
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => needsConfirm ? setConfirmReset(true) : handleReset()}
+                  className="text-xs text-[#605A57] underline underline-offset-2 hover:text-[#37322F]"
+                >
+                  {t.reset.link}
+                </button>
+              )}
+            </div>
+          )}
+        </div>
       )}
 
       {state.step > 0 && (

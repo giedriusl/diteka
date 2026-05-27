@@ -61,7 +61,7 @@ export function assessmentReducer(state: FormState, action: AssessmentAction): F
       return action.state
 
     case 'RESET':
-      return { ...initialFormState }
+      return { ...initialFormState, language: state.language }
 
     default:
       return state

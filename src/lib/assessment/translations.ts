@@ -207,8 +207,9 @@ const en = {
     benchmark: 'Companies in your sector average {benchmark}% automation potential. You scored {score}%.',
     hoursSaved: 'Your top process could save approximately {hours} hours/year (≈ {days} person-days).',
     emailSent: 'Your full report has been sent to {email}. Check your inbox — it should arrive within 60 seconds.',
-    calendarCta: 'Book a Free 30-Minute Discovery Call',
-    calendarSubtext: "Not ready to call yet? We'll be in touch.",
+    contactCta: "We'll be in touch within 2 working days.",
+    contactSubtext: 'Our team will review your results and reach out by email or phone to discuss next steps.',
+    contactFallback: "Can't wait? Email us at",
     migration: {
       headline: 'Database Migration Readiness',
       score: 'Migration score: {score}%',
@@ -237,6 +238,13 @@ const en = {
     invalidEmail: 'Please enter a valid email address.',
     submitFailed: 'Something went wrong. Please try again.',
     hoursRange: 'Please enter a number between 1 and 500.',
+  },
+
+  reset: {
+    link: 'Start over',
+    confirm: 'This will clear all your answers. Are you sure?',
+    yes: 'Yes, start over',
+    cancel: 'Cancel',
   },
 } as const
 
@@ -448,8 +456,9 @@ const lt = {
       'Jūsų geriausias procesas galėtų sutaupyti maždaug {hours} valandų per metus (≈ {days} darbo dienų).',
     emailSent:
       'Jūsų išsami ataskaita išsiųsta į {email}. Patikrinkite el. paštą — turėtų ateiti per 60 sekundžių.',
-    calendarCta: 'Rezervuoti nemokamą 30 min. skambučio laiką',
-    calendarSubtext: 'Dar neparuošti skambinti? Susisieksime patys.',
+    contactCta: 'Susisieksime per 24 valandas.',
+    contactSubtext: 'Mūsų komanda peržiūrės jūsų rezultatus ir susisieks el. paštu arba telefonu aptarti tolesnių žingsnių.',
+    contactFallback: 'Negalite laukti? Rašykite mums:',
     migration: {
       headline: 'Duomenų bazės migracijos pasirengimas',
       score: 'Migracijos balas: {score}%',
@@ -478,6 +487,13 @@ const lt = {
     invalidEmail: 'Įveskite galiojantį el. pašto adresą.',
     submitFailed: 'Kažkas nutiko. Pabandykite dar kartą.',
     hoursRange: 'Įveskite skaičių nuo 1 iki 500.',
+  },
+
+  reset: {
+    link: 'Pradėti iš naujo',
+    confirm: 'Tai ištrins visus jūsų atsakymus. Ar tikrai?',
+    yes: 'Taip, pradėti iš naujo',
+    cancel: 'Atšaukti',
   },
 } as const
 
