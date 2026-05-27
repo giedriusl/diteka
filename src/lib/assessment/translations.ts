@@ -341,7 +341,7 @@ const lt = {
     },
     D8: {
       label: 'Ar šis procesas labai pasikeis per ateinančius 12 mėnesių?',
-      1: 'Taip — visiškai pertvarkinėjame arba keičiame šį procesą',
+      1: 'Taip — visiškai pertvarkome arba keičiame šį procesą',
       2: 'Planuojami reikšmingi pokyčiai',
       3: 'Galimi kai kurie pokyčiai, bet nieko esminio',
       4: 'Tik nedideli pakeitimai',
