@@ -96,18 +96,18 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="w-full max-w-[497px] lg:w-[497px] flex flex-col justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 relative z-10 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
-          <div className="backdrop-blur-[8.25px] flex justify-start items-center gap-4 flex-wrap">
-            <a href="/assessment" className="h-10 sm:h-11 md:h-12 px-6 sm:px-8 md:px-10 lg:px-12 py-2 sm:py-[6px] relative bg-[#37322F] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset] overflow-hidden rounded-full flex justify-center items-center cursor-pointer hover:bg-[#2A2520] transition-colors">
-              <div className="w-20 sm:w-24 md:w-28 lg:w-44 h-[41px] absolute left-0 top-[-0.5px] bg-gradient-to-b from-[rgba(255,255,255,0)] to-[rgba(0,0,0,0.10)] mix-blend-multiply" />
-              <div className="flex flex-col justify-center text-white text-sm sm:text-base md:text-[15px] font-medium leading-5 font-sans">
-                Įvertinti automatizavimo potencialą →
-              </div>
+        <div className="w-full flex flex-col justify-center items-center relative z-10 mt-6 sm:mt-8 md:mt-10 lg:mt-12">
+          <div className="flex justify-center items-center gap-3">
+            <a href="/assessment" className="h-11 md:h-12 px-6 md:px-8 relative bg-[#37322F] shadow-[0px_0px_0px_2.5px_rgba(255,255,255,0.08)_inset] overflow-hidden rounded-full flex justify-center items-center hover:bg-[#2A2520] transition-colors whitespace-nowrap">
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.10)] mix-blend-multiply" />
+              <span className="relative text-white text-sm md:text-[15px] font-medium font-sans">
+                Pradėti vertinimą →
+              </span>
             </a>
-            <div className="h-10 sm:h-11 md:h-12 px-6 sm:px-8 md:px-10 py-2 sm:py-[6px] rounded-full border border-[#E0DEDB] flex justify-center items-center cursor-pointer hover:border-[#605A57] hover:bg-[#F0EDE9] transition-colors">
-              <div className="flex flex-col justify-center text-[#37322F] text-sm sm:text-base md:text-[15px] font-medium leading-5 font-sans">
+            <div className="h-11 md:h-12 px-6 md:px-8 rounded-full border border-[#E0DEDB] flex justify-center items-center cursor-pointer hover:border-[#605A57] hover:bg-[#F0EDE9] transition-colors whitespace-nowrap">
+              <span className="text-[#37322F] text-sm md:text-[15px] font-medium font-sans">
                 Susisiekti
-              </div>
+              </span>
             </div>
           </div>
         </div>
